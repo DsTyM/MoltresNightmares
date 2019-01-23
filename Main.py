@@ -80,6 +80,8 @@ class Haunter:
 
         self.speed_factor = 3
 
+        self.is_covered = False
+
     def change_haunter_move(self):
         self.move_step = (self.move_step + 1) % 4
         self.haunter = pygame.image.load("images/Haunter/" + self.direction + "/"
@@ -274,75 +276,59 @@ def reset_level():
     forrest_parts = []
 
     # Left Level Parts
-    for i_temp in range(12 * level_loops_fact):
-        if i_temp == 0:
+    for iterate_temp in range(12 * level_loops_fact):
+        if iterate_temp == 0:
             forrest_part_temp = ForrestPart("down_left")
         else:
             forrest_part_temp = ForrestPart("left")
-        forrest_part_temp.y_coord = y_away_from_beginning + 1 - ((i_temp + 1) * forrest_part_temp.size_fact * 24)
+        forrest_part_temp.y_coord = y_away_from_beginning + 1 - ((iterate_temp + 1) * forrest_part_temp.size_fact * 24)
         forrest_parts.append(forrest_part_temp)
 
     # Right Level Parts
-    for i_temp in range(12 * level_loops_fact):
-        if i_temp == 0:
+    for iterate_temp in range(12 * level_loops_fact):
+        if iterate_temp == 0:
             forrest_part_temp = ForrestPart("down_right")
         else:
             forrest_part_temp = ForrestPart("right")
         forrest_part_temp.x_coord = size[0] - forrest_part_temp.size_fact * 24
-        forrest_part_temp.y_coord = y_away_from_beginning + 1 - ((i_temp + 1) * forrest_part_temp.size_fact * 24)
+        forrest_part_temp.y_coord = y_away_from_beginning + 1 - ((iterate_temp + 1) * forrest_part_temp.size_fact * 24)
         forrest_parts.append(forrest_part_temp)
 
     # Down Level Parts
-    for i_temp in range(15):
+    for iterate_temp in range(15):
         forrest_part_temp = ForrestPart("down")
-        forrest_part_temp.x_coord = (i_temp + 1) * forrest_part_temp.size_fact * 24
+        forrest_part_temp.x_coord = (iterate_temp + 1) * forrest_part_temp.size_fact * 24
         forrest_part_temp.y_coord = y_away_from_beginning + 1 - (forrest_part_temp.size_fact * 24)
         forrest_parts.append(forrest_part_temp)
 
     # Center Level Parts
-    for i_temp in range(15):
+    for iterate_temp in range(15):
         for j in range(12 * level_loops_fact - 1):
             forrest_part_temp = ForrestPart("center")
-            forrest_part_temp.x_coord = (i_temp + 1) * forrest_part_temp.size_fact * 24
+            forrest_part_temp.x_coord = (iterate_temp + 1) * forrest_part_temp.size_fact * 24
             forrest_part_temp.y_coord = y_away_from_beginning + 1 - ((j + 2) * forrest_part_temp.size_fact * 24)
             forrest_parts.append(forrest_part_temp)
 
     # Up Level Parts
-    for i_temp in range(15):
+    for iterate_temp in range(15):
         forrest_part_temp = ForrestPart("up")
-        forrest_part_temp.x_coord = (i_temp + 1) * forrest_part_temp.size_fact * 24
+        forrest_part_temp.x_coord = (iterate_temp + 1) * forrest_part_temp.size_fact * 24
         forrest_part_temp.y_coord = y_away_from_beginning + 1 - (
                 (11 + 1) * 2 * forrest_part_temp.size_fact * 12) * level_loops_fact
         forrest_parts.append(forrest_part_temp)
 
     # Up_Left and Up_Right Level Parts
-    for i_temp in range(2):
+    for iterate_temp in range(2):
         forrest_part_temp = None
-        if i_temp == 0:
+        if iterate_temp == 0:
             forrest_part_temp = ForrestPart("up_left")
             forrest_part_temp.x_coord = 0
-        elif i_temp == 1:
+        elif iterate_temp == 1:
             forrest_part_temp = ForrestPart("up_right")
             forrest_part_temp.x_coord = 16 * forrest_part_temp.size_fact * 24
         forrest_part_temp.y_coord = y_away_from_beginning + 1 - (
                 (11 + 1) * 2 * forrest_part_temp.size_fact * 12) * level_loops_fact
         forrest_parts.append(forrest_part_temp)
-
-
-def split_haunters():
-    global haunters
-
-    for i_temp in range(len(haunters)):
-        for j_temp in range(len(haunters)):
-            if i_temp != j_temp:
-                haunter_1 = haunters[i_temp]
-                haunter_2 = haunters[j_temp]
-                # x_coord, y_coord, width, height
-                if haunter_1.x_coord - 10 < haunter_2.x_coord < haunter_1.x_coord + haunter_1.width + 10 \
-                        and haunter_1.y_coord - 10 < haunter_2.y_coord < haunter_1.y_coord + haunter_1.height + 10:
-                    haunter_1.x_coord -= 3
-                    haunter_2.x_coord += 3
-                    # move to another direction
 
 
 # Define some colors
@@ -354,6 +340,8 @@ BLUE = (0, 0, 255)
 
 BLUE_2 = (36, 68, 125)
 GREEN_2 = (30, 102, 17)
+
+# bullets.pop(bullets.index(bullet))
 
 pygame.init()
 
@@ -561,6 +549,13 @@ while not done:
 
             haunter.check_distance_to_player()
 
+            for i_temp in range(len(haunters)):
+                haunter_1 = haunters[i_temp]
+                if haunter_1 != haunter:
+                    if haunter_1.x_coord - 10 < haunter.x_coord < haunter_1.x_coord + haunter_1.width + 10 \
+                            and haunter_1.y_coord - 10 < haunter.y_coord < haunter_1.y_coord + haunter_1.height + 10:
+                        haunter.x_speed = haunter.speed_factor
+
             haunter.moves = [haunter.direction + "_1", haunter.direction + "_2",
                              haunter.direction + "_1", haunter.direction + "_3"]
 
@@ -571,8 +566,6 @@ while not done:
 
             haunter.x_coord += haunter.x_speed
             haunter.y_coord += haunter.y_speed
-
-        split_haunters()
 
         # Here, we clear the screen to white. Don't put other drawing commands
         # above this, or they will be erased with this command.
