@@ -9,10 +9,6 @@ ______________________
 2) Moltres Fire Ball should start from it's beak.
 """
 
-# Test Comment
-# Second Test Comment
-# Third Comment
-
 import pygame
 import random
 
@@ -347,7 +343,6 @@ def split_haunters():
                     pass
                     # move to another direction
                     # avoid_haunter()
-
 
 
 # Define some colors
