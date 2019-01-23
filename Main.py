@@ -550,11 +550,12 @@ while not done:
             haunter.check_distance_to_player()
 
             for i_temp in range(len(haunters)):
-                haunter_1 = haunters[i_temp]
-                if haunter_1 != haunter:
-                    if haunter_1.x_coord - 10 < haunter.x_coord < haunter_1.x_coord + haunter_1.width + 10 \
-                            and haunter_1.y_coord - 10 < haunter.y_coord < haunter_1.y_coord + haunter_1.height + 10:
-                        haunter.x_speed = haunter.speed_factor
+                candidate_haunter = haunters[i_temp]
+                if candidate_haunter != haunter:
+                    if candidate_haunter.x_coord - 10 < haunter.x_coord < candidate_haunter.x_coord + \
+                            candidate_haunter.width + 10 and candidate_haunter.y_coord - 10 < haunter.y_coord < \
+                            candidate_haunter.y_coord + candidate_haunter.height + 10:
+                        haunter.x_speed = 3
 
             haunter.moves = [haunter.direction + "_1", haunter.direction + "_2",
                              haunter.direction + "_1", haunter.direction + "_3"]
