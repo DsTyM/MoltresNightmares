@@ -17,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="333" lean-forward="true" selection-start-line="333" selection-end-line="333" />
+            <state relative-caret-position="448">
+              <caret line="345" selection-start-line="345" selection-end-line="345" />
               <folding>
                 <element signature="e#185#198#0" expanded="true" />
               </folding>
@@ -36,7 +36,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$USER_HOME$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -185,17 +185,18 @@
       <workItem from="1548167459677" duration="822000" />
       <workItem from="1548221756571" duration="2078000" />
       <workItem from="1548225550014" duration="48000" />
+      <workItem from="1548226377628" duration="65000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75945000" />
+    <option name="totallyTimeSpent" value="76010000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17963752" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18123667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -245,8 +246,8 @@
     <entry file="file://$PROJECT_DIR$/sounds/theme_1.wav" />
     <entry file="file://$PROJECT_DIR$/Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="333" lean-forward="true" selection-start-line="333" selection-end-line="333" />
+        <state relative-caret-position="448">
+          <caret line="345" selection-start-line="345" selection-end-line="345" />
           <folding>
             <element signature="e#185#198#0" expanded="true" />
           </folding>
