@@ -338,11 +338,11 @@ def split_haunters():
                 haunter_1 = haunters[i_temp]
                 haunter_2 = haunters[j_temp]
                 # x_coord, y_coord, width, height
-                if haunter_1.x_coord < haunter_2.x_coord < haunter_1.x_coord + haunter_1.width \
-                        and haunter_1.y_coord < haunter_2.y_coord < haunter_1.y_coord + haunter_1.height:
-                    pass
+                if haunter_1.x_coord - 10 < haunter_2.x_coord < haunter_1.x_coord + haunter_1.width + 10 \
+                        and haunter_1.y_coord - 10 < haunter_2.y_coord < haunter_1.y_coord + haunter_1.height + 10:
+                    haunter_1.x_coord -= 3
+                    haunter_2.x_coord += 3
                     # move to another direction
-                    # avoid_haunter()
 
 
 # Define some colors
