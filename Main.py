@@ -205,7 +205,7 @@ class Haunter:
 
 
 def change_player_move():
-    global p_move_i, p_dir, p_moves, player, player_width, player_height
+    global p_move_i, p_dir, p_moves, player, player_width, player_height, p_fact
 
     p_move_i = (p_move_i + 1) % 4
     player = pygame.image.load("images/Moltres/" + p_dir + "/"
@@ -214,6 +214,23 @@ def change_player_move():
     player_height = player.get_rect().height
     player = pygame.transform.scale(player, (int(player_width * p_fact),
                                              int(player_height * p_fact)))
+
+
+# returns tuple of: min_player_width, min_player_height, max_player_width, max_player_height
+def get_max_min_player_width_height():
+    global p_fact
+
+    arr = ["down_right", "down_left", "up_right", "up_left", "right", "left", "down", "up"]
+    widths = []
+    heights = []
+    for temp_dir in arr:
+        fig = pygame.image.load("images/Moltres/" + temp_dir + "/" + temp_dir + "_1.png").convert_alpha()
+        fig_width = fig.get_rect().width
+        fig_height = fig.get_rect().height
+
+        widths.append(fig_width)
+        heights.append(fig_height)
+    return min(widths), min(heights), max(widths), max(heights)
 
 
 def select_direction():
@@ -419,6 +436,8 @@ player_height = player.get_rect().height
 player = pygame.transform.scale(player, (int(player_width * p_fact),
                                          int(player_height * p_fact)))
 
+min_player_width, min_player_height, max_player_width, max_player_height = get_max_min_player_width_height()
+
 # Loop until the user clicks the close button.
 done = False
 
@@ -430,7 +449,7 @@ clock = pygame.time.Clock()
 fireballs = []
 
 haunters = []
-for i in range(5):
+for i in range(0):
     h = Haunter()
     h.x_distance += (i + 1) * 65
     h.y_distance += (i + 1) * random.randint(-20, 20)
@@ -477,7 +496,7 @@ pressed_keys = []
 
 # Level 1
 level_1_objects = []
-level_1_objects.append(LevelObject("tree.png", [500, 10], 1.8))
+level_1_objects.append(LevelObject("tree.png", [300, 10], 1.8))
 
 y_away_from_beginning_max = (size[1] + 2) * level_loops_fact
 
@@ -639,8 +658,8 @@ while not done:
                 else:
                     move_platform("down")
         for l1 in level_1_objects:
-            if l1.coords[1] - 75 < y_coord + player_height < l1.coords[1] + l1.height and \
-                    l1.coords[0] - 70 < x_coord + player_width < l1.coords[0] + l1.width + 50:
+            if l1.coords[1] - 75 < y_coord + max_player_height < l1.coords[1] + l1.height and \
+                    l1.coords[0] - 70 < x_coord + max_player_width < l1.coords[0] + l1.width + 50:
                 x_coord -= x_speed
                 y_coord -= y_speed
 
