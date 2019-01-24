@@ -477,7 +477,7 @@ pressed_keys = []
 
 # Level 1
 level_1_objects = []
-level_1_objects.append(LevelObject("tree.png", [570, 10], 1.8))
+level_1_objects.append(LevelObject("tree.png", [500, 10], 1.8))
 
 y_away_from_beginning_max = (size[1] + 2) * level_loops_fact
 
@@ -638,6 +638,11 @@ while not done:
                     y_coord += y_speed
                 else:
                     move_platform("down")
+        for l1 in level_1_objects:
+            if l1.coords[1] - 75 < y_coord + player_height < l1.coords[1] + l1.height and \
+                    l1.coords[0] - 70 < x_coord + player_width < l1.coords[0] + l1.width + 50:
+                x_coord -= x_speed
+                y_coord -= y_speed
 
         # Check for level change
         if stairs_dim[0] - 80 < x_coord < stairs_dim[0] - 20 and \
