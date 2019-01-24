@@ -283,7 +283,7 @@ def change_dead_ghost():
 
 
 def move_platform(platform_dir=""):
-    global y_away_from_beginning, tree_dim, haunters
+    global y_away_from_beginning, haunters, level_1_objects, level_num
 
     temp_num = 0
 
@@ -299,8 +299,10 @@ def move_platform(platform_dir=""):
             temp_haunter.y_coord += temp_num
     for temp_forrest_part in forrest_parts:
         temp_forrest_part.y_coord += temp_num
-    for l_object in level_objects:
-        l_object.coords[1] += temp_num
+
+    if level_num == 1:
+        for l_1_object in level_1_objects:
+            l_1_object.coords[1] += temp_num
 
 
 def reset_level():
@@ -472,8 +474,10 @@ dead_ghost_counter = 0
 pressed_keys = []
 
 # Level Objects
-level_objects = []
-level_objects.append(LevelObject("tree.png", [570, 10], 1.8))
+
+# Level 1
+level_1_objects = []
+level_1_objects.append(LevelObject("tree.png", [570, 10], 1.8))
 
 y_away_from_beginning_max = (size[1] + 2) * level_loops_fact
 
@@ -663,8 +667,9 @@ while not done:
 
         screen.blit(stairs, stairs_dim)
 
-        for level_object in level_objects:
-            screen.blit(level_object.get(), level_object.coords)
+        if level_num == 1:
+            for level_1_object in level_1_objects:
+                screen.blit(level_1_object.get(), level_1_object.coords)
 
         for fireball in fireballs:
             if -50 < fireball.x_coord < size[0] + 50 and -50 < fireball.y_coord < size[1] + 50:
