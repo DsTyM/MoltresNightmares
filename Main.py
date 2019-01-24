@@ -52,6 +52,29 @@ class ForrestPart:
                                                     int(self.height * self.size_fact)))
 
 
+class LevelObject:
+    def __init__(self, image_name, coords, size_fact=1.0):
+        self.image_name = image_name
+        self.coords = coords
+        self.size_fact = size_fact
+
+        self.source = pygame.image.load("images/objects/" + self.image_name).convert_alpha()
+        self.width = self.source.get_rect().width
+        self.height = self.source.get_rect().height
+
+        self.source = pygame.transform.scale(self.source, (int(self.width * self.size_fact),
+                                                           int(self.height * self.size_fact)))
+
+        self.width = self.source.get_rect().width
+        self.height = self.source.get_rect().height
+
+    def get(self):
+        return self.source
+
+    def get_coords(self):
+        return [self.width, self.height]
+
+
 class Haunter:
     def __init__(self):
         self.zoom_factor = 2.5
@@ -79,8 +102,6 @@ class Haunter:
         self.old_y_speed = self.y_speed
 
         self.speed_factor = 3
-
-        self.is_covered = False
 
     def change_haunter_move(self):
         self.move_step = (self.move_step + 1) % 4
@@ -155,6 +176,29 @@ class Haunter:
             self.direction = "down"
         elif self.x_coord - partial_val_x < x_coord < self.x_coord + partial_val_x and self.y_coord > y_coord:
             self.direction = "up"
+
+    def avoid_haunters(self):
+        global haunters
+
+        for temp_haunter in haunters:
+            if temp_haunter != self:
+                diff_1 = self.x_coord - temp_haunter.x_coord
+                diff_2 = self.y_coord - temp_haunter.y_coord
+
+                if -self.width - 10 <= diff_1 <= self.width + 10 \
+                        and -self.height - 10 <= diff_2 <= self.height + 10:
+                    if 0 < diff_1 < diff_2:
+                        self.x_speed = self.speed_factor
+                        self.direction = "right"
+                    elif diff_1 < 0 and diff_1 < diff_2:
+                        self.x_speed = -self.speed_factor
+                        self.direction = "left"
+                    elif diff_1 > 0 and diff_1 > diff_2:
+                        self.y_speed = self.speed_factor
+                        self.direction = "down"
+                    elif 0 > diff_1 > diff_2:
+                        self.y_speed = -self.speed_factor
+                        self.direction = "up"
 
     def get(self):
         return self.haunter
@@ -249,13 +293,14 @@ def move_platform(platform_dir=""):
         temp_num = -3
 
     y_away_from_beginning += temp_num
-    tree_dim[1] += temp_num
     stairs_dim[1] += temp_num
     for temp_haunter in haunters:
         if temp_haunter.is_alive:
             temp_haunter.y_coord += temp_num
     for temp_forrest_part in forrest_parts:
         temp_forrest_part.y_coord += temp_num
+    for l_object in level_objects:
+        l_object.coords[0] += temp_num
 
 
 def reset_level():
@@ -426,14 +471,9 @@ dead_ghost_counter = 0
 
 pressed_keys = []
 
-# Tree Initialization
-t_fact = 1.8
-tree = pygame.image.load("images/tree.png").convert_alpha()
-tree_width = tree.get_rect().width
-tree_height = tree.get_rect().height
-tree = pygame.transform.scale(tree, (int(tree_width * t_fact),
-                                     int(tree_height * t_fact)))
-tree_dim = [600, -150]
+# Level Objects
+level_objects = []
+level_objects.append(LevelObject("tree.png", [570, 10], 1.8))
 
 y_away_from_beginning_max = (size[1] + 2) * level_loops_fact
 
@@ -549,14 +589,6 @@ while not done:
 
             haunter.check_distance_to_player()
 
-            for i_temp in range(len(haunters)):
-                candidate_haunter = haunters[i_temp]
-                if candidate_haunter != haunter:
-                    if candidate_haunter.x_coord - 10 < haunter.x_coord < candidate_haunter.x_coord + \
-                            candidate_haunter.width + 10 and candidate_haunter.y_coord - 10 < haunter.y_coord < \
-                            candidate_haunter.y_coord + candidate_haunter.height + 10:
-                        haunter.x_speed = 3
-
             haunter.moves = [haunter.direction + "_1", haunter.direction + "_2",
                              haunter.direction + "_1", haunter.direction + "_3"]
 
@@ -631,7 +663,8 @@ while not done:
 
         screen.blit(stairs, stairs_dim)
 
-        screen.blit(tree, tree_dim)
+        for level_object in level_objects:
+            screen.blit(level_object.get(), level_object.coords)
 
         for fireball in fireballs:
             if -50 < fireball.x_coord < size[0] + 50 and -50 < fireball.y_coord < size[1] + 50:
