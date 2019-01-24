@@ -300,7 +300,7 @@ def move_platform(platform_dir=""):
     for temp_forrest_part in forrest_parts:
         temp_forrest_part.y_coord += temp_num
     for l_object in level_objects:
-        l_object.coords[0] += temp_num
+        l_object.coords[1] += temp_num
 
 
 def reset_level():
