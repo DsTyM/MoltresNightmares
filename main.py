@@ -1,5 +1,4 @@
 import pygame
-import random
 import global_variables as gv
 from fireball import FireBall
 from forrest_parts import ForrestPart
