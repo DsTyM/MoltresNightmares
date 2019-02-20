@@ -2,7 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2290658-c6ac-40c7-8846-d15115335066" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/images/Gengar/down/down_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/down/down_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/down/down_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/down_left/down_left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/down_left/down_left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/down_left/down_left_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/down_right/down_right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/down_right/down_right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/down_right/down_right_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/left/left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/left/left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/left/left_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/right/right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/right/right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/right/right_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/up/up_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/up/up_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/up/up_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/up_left/up_left_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/up_left/up_left_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/up_left/up_left_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/up_right/up_right_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/up_right/up_right_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/Gengar/up_right/up_right_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/heart.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Levels/Level_1/alt_1/center.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Levels/Level_1/alt_1/center.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Levels/Level_1/alt_2/center_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Levels/Level_1/alt_2/center_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/Levels/Level_1/alt_2/center_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/Levels/Level_1/alt_2/center_2.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,7 +40,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Moltres_Nightmares$Main.coverage" NAME="Main Coverage Results" MODIFIED="1548381542505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Moltres_Nightmares$main.coverage" NAME="main Coverage Results" MODIFIED="1549406431629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Moltres_Nightmares$main.coverage" NAME="main Coverage Results" MODIFIED="1550693346365" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Graphics_Game$Main.coverage" NAME="Main Coverage Results" MODIFIED="1548122399052" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -20,8 +48,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="126">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -33,7 +61,7 @@
         <entry file="file://$PROJECT_DIR$/fireball.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="42">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -41,7 +69,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/forrest_parts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
+            <state relative-caret-position="21">
               <caret line="3" selection-start-line="3" selection-end-line="3" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
@@ -62,8 +90,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/enemy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="84">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -75,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/global_variables.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -122,6 +150,11 @@
               <item name="Moltres Nightmares" type="b2602c69:ProjectViewProjectNode" />
               <item name="Graphics_Game" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Moltres Nightmares" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Graphics_Game" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -132,22 +165,23 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="ReadonlyStatusHandler">
     <option name="SHOW_DIALOG" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images" />
+      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\objects" />
+      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\Levels" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\objects" />
       <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images" />
       <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\sounds" />
       <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\Levels" />
       <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\Forrest\alt_2" />
-      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\objects" />
-      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\Levels" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -278,7 +312,13 @@
       <workItem from="1548381169515" duration="659000" />
       <workItem from="1549405759778" duration="98000" />
       <workItem from="1549405894033" duration="110000" />
-      <workItem from="1549406078042" duration="512000" />
+      <workItem from="1549406078042" duration="764000" />
+      <workItem from="1549407292236" duration="504000" />
+      <workItem from="1550080380334" duration="1654000" />
+      <workItem from="1550265981790" duration="876000" />
+      <workItem from="1550569731718" duration="680000" />
+      <workItem from="1550682476180" duration="1237000" />
+      <workItem from="1550691581415" duration="1276000" />
     </task>
     <task id="LOCAL-00001" summary="Test Commit">
       <created>1548226514949</created>
@@ -378,21 +418,36 @@
       <option name="project" value="LOCAL" />
       <updated>1549406543488</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added classes files (again).">
+      <created>1549406701692</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1549406701692</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Removed unused files.">
+      <created>1549406801854</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1549406801854</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103664000" />
+    <option name="totallyTimeSpent" value="110143000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16311301" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17270789" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49626866" visible="true" weight="0.2881907" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49626866" visible="true" weight="0.2881907" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -400,7 +455,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.50373137" side_tool="true" visible="true" weight="0.2881907" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50373137" side_tool="true" weight="0.2881907" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32936078" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -471,7 +526,8 @@
     <MESSAGE value="Split Classes into multiple files&#10;and also implementing Haunter to start&#10;moving after appears on screen." />
     <MESSAGE value="Added classes files." />
     <MESSAGE value="Added classes files (again)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added classes files (again)." />
+    <MESSAGE value="Removed unused files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unused files." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/images/objects/tree.png">
@@ -481,12 +537,6 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/images/logo.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Faint Ball.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/images/Fire Ball.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/sounds/theme_1.wav" />
@@ -507,16 +557,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/global_variables.py">
+    <entry file="file://$PROJECT_DIR$/images/Fire Ball.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/Faint Ball.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fireball.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="42">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/forrest_parts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
+        <state relative-caret-position="21">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
@@ -531,27 +587,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/global_variables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/enemy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        <state relative-caret-position="84">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fireball.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="126">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
