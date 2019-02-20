@@ -264,6 +264,10 @@ fb_sound = pygame.mixer.Sound("sounds/FB_Sound.wav")
 # change it to 0.3
 fb_sound.set_volume(0.15)
 
+dh_sound = pygame.mixer.Sound("sounds/Haunter_Died.wav")
+# change it to 0.3
+dh_sound.set_volume(0.2)
+
 # Player Initialization
 p_fact = 2.5
 player = pygame.image.load("images/Moltres/down/down_1.png").convert_alpha()
@@ -319,8 +323,23 @@ stairs = pygame.transform.scale(stairs, (int(stairs_width * st_fact),
 stairs_dim = [int(gv.size[0] / 2),
               y_away_from_beginning + 1 - (11 * 2 * ForrestPart("up").size_fact * 12) * level_loops_fact - 15]
 
-dg_fact = 2.5
+# lives must be an even number (at declaration)
+lives = 8
+heart = pygame.image.load("images/heart.png").convert_alpha()
+heart_fact = 0.2
+heart_width = heart.get_rect().width
+heart_height = heart.get_rect().height
+heart = pygame.transform.scale(heart, (int(heart_width * heart_fact),
+                                       int(heart_height * heart_fact)))
+heart_width = heart.get_rect().width
+heart_height = heart.get_rect().height
+heart_dim_list = []
+for i in range(int(lives / 2)):
+    heart_dim_list.append([gv.size[0] - 210 - (i * 35), 3])
+for i in range(int(lives / 2)):
+    heart_dim_list.append([gv.size[0] - 210 - (i * 35), 32])
 
+dg_fact = 2.5
 dead_ghost = None
 dead_ghost_counter = 0
 
@@ -556,6 +575,7 @@ while not done:
                         temp_val_y - 30 < fireball.y_coord < temp_val_y + 30 and \
                         haunter.is_alive:
                     haunter.is_alive = False
+                    dh_sound.play()
                     score += 100
                     dead_ghost_counter = 1
                     fireball.x_coord = gv.size[0] + 55
@@ -580,6 +600,11 @@ while not done:
 
         score_text = score_display_font.render('Score: ' + str(score), True, WHITE)
         screen.blit(score_text, [gv.size[0] - 170, 10])
+
+        hearts_down_line = True
+        for i in range(lives):
+            dims = heart_dim_list[i]
+            screen.blit(heart, dims)
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
