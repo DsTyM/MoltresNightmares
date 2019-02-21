@@ -289,7 +289,7 @@ clock = pygame.time.Clock()
 fireballs = []
 
 gv.haunters_level_1 = []
-gv.haunters_level_1.append(Haunter([50, 50]))
+gv.haunters_level_1.append(Haunter([190, 50]))
 gv.haunters_level_1.append(Haunter([120, -500]))
 
 min_haunter_width, min_haunter_height, gv.max_haunter_width, gv.max_haunter_height = get_max_min_haunter_width_height()

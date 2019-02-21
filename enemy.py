@@ -94,13 +94,19 @@ class Haunter:
             self.direction = "up_right"
         elif self.x_coord > gv.x_coord and self.y_coord < gv.y_coord:
             self.direction = "down_left"
-        if self.y_coord - partial_val_y < gv.y_coord < self.y_coord + partial_val_y and self.x_coord < gv.x_coord:
+
+        # adjusting haunter looking for Moltress
+        if self.y_coord - partial_val_y - 60 < gv.y_coord < self.y_coord + partial_val_y \
+                and self.x_coord < gv.x_coord:
             self.direction = "right"
-        elif self.y_coord - partial_val_y - 60 < gv.y_coord < self.y_coord + partial_val_y and self.x_coord > gv.x_coord:
+        elif self.y_coord - partial_val_y - 60 < gv.y_coord < self.y_coord + partial_val_y \
+                and self.x_coord > gv.x_coord:
             self.direction = "left"
-        elif self.x_coord - partial_val_x - 20 < gv.x_coord < self.x_coord + partial_val_x and self.y_coord < gv.y_coord:
+        elif self.x_coord - partial_val_x - 20 < gv.x_coord < self.x_coord + partial_val_x \
+                and self.y_coord < gv.y_coord:
             self.direction = "down"
-        elif self.x_coord - partial_val_x < gv.x_coord < self.x_coord + partial_val_x and self.y_coord > gv.y_coord:
+        elif self.x_coord - partial_val_x - 20 < gv.x_coord < self.x_coord + partial_val_x \
+                and self.y_coord > gv.y_coord:
             self.direction = "up"
 
     def avoid_haunters(self):
