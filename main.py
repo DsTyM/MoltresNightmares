@@ -1,10 +1,9 @@
 import pygame
 import global_variables as gv
-from ball import FireBall
-from ball import FaintBall
+from ball import FireBall, FaintBall
 from forrest_parts import ForrestPart
 from level_objects import LevelObject
-from enemy import Haunter
+from enemy import Haunter, Gengar
 
 """
 Notes
@@ -151,6 +150,10 @@ def move_platform(platform_dir=""):
     for temp_haunter in gv.haunters_level_1:
         if temp_haunter.is_alive:
             temp_haunter.y_coord += temp_num
+
+    if gengar.is_alive:
+        gengar.y_coord += temp_num
+
     for temp_forrest_part in forrest_parts:
         temp_forrest_part.y_coord += temp_num
 
@@ -306,6 +309,9 @@ gv.haunters_level_1.append(Haunter([120, -500]))
 
 min_haunter_width, min_haunter_height, gv.max_haunter_width, gv.max_haunter_height = get_max_min_haunter_width_height()
 
+gengar = Gengar([150, 60])
+gengar.is_alive = False
+
 # Speed in pixels per frame
 x_speed, y_speed = 0, 0
 
@@ -322,8 +328,8 @@ pygame.time.set_timer(PLAYER_MOVE_EVENT, 250)
 HAUNTER_MOVE_EVENT = pygame.USEREVENT + 2
 pygame.time.set_timer(HAUNTER_MOVE_EVENT, 300)
 
-HAUNTER_FIRE_EVENT = pygame.USEREVENT + 3
-pygame.time.set_timer(HAUNTER_FIRE_EVENT, 1500)
+ENEMY_FIRE_EVENT = pygame.USEREVENT + 3
+pygame.time.set_timer(ENEMY_FIRE_EVENT, 1500)
 
 # Level_1
 forrest_parts = []
@@ -386,6 +392,8 @@ is_start_screen = True
 
 is_pause = False
 
+gengar_move_time = 0
+
 # -------- Main Program Loop -----------
 while not done:
     # --- Main event loop
@@ -397,12 +405,11 @@ while not done:
             for haunter in gv.haunters_level_1:
                 haunter.change_haunter_move()
 
-        if event.type == HAUNTER_FIRE_EVENT:
+        if event.type == ENEMY_FIRE_EVENT:
             for haunter in gv.haunters_level_1:
-                if haunter.can_move and haunter.is_alive:
+                if haunter.can_move and haunter.is_alive and lives != 0 and not is_pause and not is_start_screen:
                     sb_sound.play()
                     faintball_1 = FaintBall()
-
                     add_n = 20
                     faintball_1.x_coord, faintball_1.y_coord = haunter.x_coord + add_n, haunter.y_coord + add_n
 
@@ -436,6 +443,42 @@ while not done:
 
                     faintballs.append(faintball_1)
 
+            if gengar.can_move and gengar.is_alive and lives != 0 and not is_pause and not is_start_screen:
+                sb_sound.play()
+                faintball_1 = FaintBall()
+                add_n = 20
+                faintball_1.x_coord, faintball_1.y_coord = gengar.x_coord + add_n, gengar.y_coord + add_n
+
+                fb_speed_fact = 3
+
+                h_dir = gengar.direction
+                if h_dir == "down":
+                    faintball_1.x_speed = 0
+                    faintball_1.y_speed = fb_speed_fact
+                elif h_dir == "up":
+                    faintball_1.x_speed = 0
+                    faintball_1.y_speed = -fb_speed_fact
+                elif h_dir == "right":
+                    faintball_1.x_speed = fb_speed_fact
+                    faintball_1.y_speed = 0
+                elif h_dir == "left":
+                    faintball_1.x_speed = -fb_speed_fact
+                    faintball_1.y_speed = 0
+                elif h_dir == "down_right":
+                    faintball_1.x_speed = fb_speed_fact
+                    faintball_1.y_speed = fb_speed_fact
+                elif h_dir == "down_left":
+                    faintball_1.x_speed = -fb_speed_fact
+                    faintball_1.y_speed = fb_speed_fact
+                elif h_dir == "up_right":
+                    faintball_1.x_speed = fb_speed_fact
+                    faintball_1.y_speed = -fb_speed_fact
+                elif h_dir == "up_left":
+                    faintball_1.x_speed = -fb_speed_fact
+                    faintball_1.y_speed = -fb_speed_fact
+
+                faintballs.append(faintball_1)
+
         if event.type == pygame.QUIT:
             done = True
             # User pressed down on a key
@@ -444,7 +487,7 @@ while not done:
             # Figure out if it was an arrow key.
             # If so, adjust speed.
 
-            if not is_start_screen and not is_pause:
+            if not is_start_screen and not is_pause and lives != 0:
                 select_direction()
 
                 if gv.x_coord > gv.size[0] - 40:
@@ -509,7 +552,9 @@ while not done:
 
     # --- Game logic should go here
 
-    if not is_start_screen and not is_pause:
+    if not is_start_screen and not is_pause and lives != 0:
+        gengar_move_time = (gengar_move_time + 1) % 60
+
         # Let Haunters Move
         for haunter in gv.haunters_level_1:
             if not haunter.can_move:
@@ -542,6 +587,34 @@ while not done:
                         l1.coords[0] - 45 < haunter.x_coord + gv.max_haunter_width < l1.coords[0] + l1.width + 30:
                     haunter.x_coord -= haunter.x_speed
                     haunter.y_coord -= haunter.y_speed
+
+        # Gengar AI
+        if not gengar.can_move and gengar.y_coord > 0:
+            gengar.can_move = True
+
+        gengar.old_x_speed = gengar.x_speed
+        gengar.old_y_speed = gengar.y_speed
+
+        gengar.check_direction()
+
+        gengar.check_distance_to_player()
+
+        gengar.change_gengar_target()
+
+        gengar.moves = [gengar.direction + "_1", gengar.direction + "_2",
+                        gengar.direction + "_1", gengar.direction + "_3"]
+
+        if gengar.old_x_speed == 0 and gengar.x_speed != 0:
+            gengar.change_gengar_move()
+        elif gengar.old_y_speed == 0 and gengar.y_speed != 0:
+            gengar.change_gengar_move()
+
+        if (gengar.x_speed != 0 or gengar.y_speed != 0) and gengar_move_time % 10 == 0:
+            gengar.change_gengar_move()
+
+        if gengar.can_move:
+            gengar.x_coord += gengar.x_speed
+            gengar.y_coord += gengar.y_speed
 
         # Here, we clear the screen to white. Don't put other drawing commands
         # above this, or they will be erased with this command.
@@ -614,6 +687,24 @@ while not done:
                         change_dead_ghost()
                         screen.blit(dead_ghost, [x_appear, y_appear])
 
+            # Check if Gengar is going to be killed.
+            temp_val_x = gengar.x_coord + int(gengar.width) / 2
+            temp_val_y = gengar.y_coord + int(gengar.height) / 2
+            if temp_val_x - 30 < fireball.x_coord < temp_val_x + 30 and \
+                    temp_val_y - 30 < fireball.y_coord < temp_val_y + 30 and \
+                    gengar.is_alive:
+                gengar.is_alive = False
+                dh_sound.play()
+                score += 500
+                dead_ghost_counter = 1
+                fireball.x_coord = -55
+                fireball.y_coord = -55
+                x_appear = gengar.x_coord - 40
+                y_appear = gengar.y_coord - 10
+                if 0 < dead_ghost_counter <= 4:
+                    change_dead_ghost()
+                    screen.blit(dead_ghost, [x_appear, y_appear])
+
                 for l1 in level_1_objects:
                     if l1.coords[0] - 10 < fireball.x_coord < l1.coords[0] + l1.width + 10 and \
                             l1.coords[1] - 10 < fireball.y_coord < l1.coords[1] + l1.height + 10:
@@ -625,16 +716,14 @@ while not done:
                 faintball.x_coord += faintball.x_speed
                 faintball.y_coord += faintball.y_speed
 
-                # Check if Player are going to lose a life.
-                for haunter in gv.haunters_level_1:
-                    temp_val_x = gv.x_coord + int(player_width) / 2
-                    temp_val_y = gv.y_coord + int(player_height) / 2
-                    # -60, +60, -50, +80
-                    if temp_val_x - 60 < faintball.x_coord < temp_val_x + 140 and \
-                            temp_val_y - 50 < faintball.y_coord < temp_val_y + 70:
-                        faintball.x_coord = -55
-                        faintball.y_coord = -55
-                        lives -= 1
+                # Check if Player is going to lose a life.
+                temp_val_x = gv.x_coord + int(player_width) / 2
+                temp_val_y = gv.y_coord + int(player_height) / 2
+                if temp_val_x - 60 < faintball.x_coord < temp_val_x + 140 and \
+                        temp_val_y - 50 < faintball.y_coord < temp_val_y + 70:
+                    faintball.x_coord = -55
+                    faintball.y_coord = -55
+                    lives -= 1
 
                 for l1 in level_1_objects:
                     if l1.coords[0] - 10 < faintball.x_coord < l1.coords[0] + l1.width + 10 and \
@@ -655,6 +744,10 @@ while not done:
         text1 = level_display_font.render('Level: ' + str(gv.level_num), True, WHITE)
         screen.blit(text1, [gv.size[1] / 2 + 50, gv.size[0] / 4])
         level_display_counter += 1
+    elif lives == 0:
+        screen.fill(BLACK)
+        text1 = level_display_font.render('You lose!', True, WHITE)
+        screen.blit(text1, [gv.size[1] / 2 + 35, gv.size[0] / 4])
     else:
         screen.fill(BLACK)
 
@@ -678,6 +771,9 @@ while not done:
         for haunter in gv.haunters_level_1:
             if haunter.is_alive and gv.level_num == 1:
                 screen.blit(haunter.get(), [haunter.x_coord, haunter.y_coord])
+
+        if gengar.is_alive:
+            screen.blit(gengar.get(), [gengar.x_coord, gengar.y_coord])
 
         screen.blit(player, [gv.x_coord, gv.y_coord])
 
