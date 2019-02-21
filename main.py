@@ -1,6 +1,7 @@
 import pygame
 import global_variables as gv
-from fireball import FireBall
+from ball import FireBall
+from ball import FaintBall
 from forrest_parts import ForrestPart
 from level_objects import LevelObject
 from enemy import Haunter
@@ -287,9 +288,10 @@ y_away_from_beginning = gv.size[1]
 clock = pygame.time.Clock()
 
 fireballs = []
+faintballs = []
 
 gv.haunters_level_1 = []
-gv.haunters_level_1.append(Haunter([190, 50]))
+gv.haunters_level_1.append(Haunter([260, 50]))
 gv.haunters_level_1.append(Haunter([120, -500]))
 
 min_haunter_width, min_haunter_height, gv.max_haunter_width, gv.max_haunter_height = get_max_min_haunter_width_height()
@@ -305,10 +307,13 @@ p_moves = ["down_1", "down_2", "down_1", "down_3"]
 p_move_i = 0
 
 PLAYER_MOVE_EVENT = pygame.USEREVENT + 1
-pygame.time.set_timer(PLAYER_MOVE_EVENT, 200)
+pygame.time.set_timer(PLAYER_MOVE_EVENT, 250)
 
-HAUNTER_MOVE_EVENT = pygame.USEREVENT + 1
+HAUNTER_MOVE_EVENT = pygame.USEREVENT + 2
 pygame.time.set_timer(HAUNTER_MOVE_EVENT, 300)
+
+HAUNTER_FIRE_EVENT = pygame.USEREVENT + 3
+pygame.time.set_timer(HAUNTER_FIRE_EVENT, 1500)
 
 # Level_1
 forrest_parts = []
@@ -381,6 +386,44 @@ while not done:
         if event.type == HAUNTER_MOVE_EVENT:
             for haunter in gv.haunters_level_1:
                 haunter.change_haunter_move()
+
+        if event.type == HAUNTER_FIRE_EVENT:
+            for haunter in gv.haunters_level_1:
+                if haunter.can_move and haunter.is_alive:
+                    faintball_1 = FaintBall()
+
+                    add_n = 20
+                    faintball_1.x_coord, faintball_1.y_coord = haunter.x_coord + add_n, haunter.y_coord + add_n
+
+                    fb_speed_fact = 3
+
+                    h_dir = haunter.direction
+                    if h_dir == "down":
+                        faintball_1.x_speed = 0
+                        faintball_1.y_speed = fb_speed_fact
+                    elif h_dir == "up":
+                        faintball_1.x_speed = 0
+                        faintball_1.y_speed = -fb_speed_fact
+                    elif h_dir == "right":
+                        faintball_1.x_speed = fb_speed_fact
+                        faintball_1.y_speed = 0
+                    elif h_dir == "left":
+                        faintball_1.x_speed = -fb_speed_fact
+                        faintball_1.y_speed = 0
+                    elif h_dir == "down_right":
+                        faintball_1.x_speed = fb_speed_fact
+                        faintball_1.y_speed = fb_speed_fact
+                    elif h_dir == "down_left":
+                        faintball_1.x_speed = -fb_speed_fact
+                        faintball_1.y_speed = fb_speed_fact
+                    elif h_dir == "up_right":
+                        faintball_1.x_speed = fb_speed_fact
+                        faintball_1.y_speed = -fb_speed_fact
+                    elif h_dir == "up_left":
+                        faintball_1.x_speed = -fb_speed_fact
+                        faintball_1.y_speed = -fb_speed_fact
+
+                    faintballs.append(faintball_1)
 
         if event.type == pygame.QUIT:
             done = True
@@ -578,8 +621,8 @@ while not done:
                     dh_sound.play()
                     score += 100
                     dead_ghost_counter = 1
-                    fireball.x_coord = gv.size[0] + 55
-                    fireball.y_coord = gv.size[1] + 55
+                    fireball.x_coord = -55
+                    fireball.y_coord = -55
                     x_appear = haunter.x_coord - 40
                     y_appear = haunter.y_coord - 10
                     if 0 < dead_ghost_counter <= 4:
@@ -591,6 +634,29 @@ while not done:
                         l1.coords[1] - 10 < fireball.y_coord < l1.coords[1] + l1.height + 10:
                     fireball.x_coord = gv.size[0] + 55
                     fireball.y_coord = gv.size[1] + 55
+
+        for faintball in faintballs:
+            if -50 < faintball.x_coord < gv.size[0] + 50 and -50 < faintball.y_coord < gv.size[1] + 50:
+                faintball.x_coord += faintball.x_speed
+                faintball.y_coord += faintball.y_speed
+                screen.blit(faintball.get(), [faintball.x_coord, faintball.y_coord])
+
+                # Check if Player are going to lose a life.
+                for haunter in gv.haunters_level_1:
+                    temp_val_x = gv.x_coord + int(player_width) / 2
+                    temp_val_y = gv.y_coord + int(player_height) / 2
+                    # -60, +60, -50, +80
+                    if temp_val_x - 60 < faintball.x_coord < temp_val_x + 140 and \
+                            temp_val_y - 50 < faintball.y_coord < temp_val_y + 70:
+                        faintball.x_coord = -55
+                        faintball.y_coord = -55
+                        lives -= 1
+
+                for l1 in level_1_objects:
+                    if l1.coords[0] - 10 < faintball.x_coord < l1.coords[0] + l1.width + 10 and \
+                            l1.coords[1] - 10 < faintball.y_coord < l1.coords[1] + l1.height + 10:
+                        faintball.x_coord = gv.size[0] + 55
+                        faintball.y_coord = gv.size[1] + 55
 
         for haunter in gv.haunters_level_1:
             if haunter.is_alive and gv.level_num == 1:
