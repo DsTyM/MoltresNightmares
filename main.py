@@ -158,6 +158,12 @@ def move_platform(platform_dir=""):
         for l_1_object in level_1_objects:
             l_1_object.coords[1] += temp_num
 
+    for fireball in fireballs:
+        fireball.y_coord += temp_num
+
+    for faintball in faintballs:
+        faintball.y_coord += temp_num
+
 
 def reset_level():
     global player_width, player_height, y_away_from_beginning, tree_dim, stairs_dim, \
@@ -265,6 +271,10 @@ fb_sound = pygame.mixer.Sound("sounds/FB_Sound.wav")
 # change it to 0.3
 fb_sound.set_volume(0.15)
 
+sb_sound = pygame.mixer.Sound("sounds/SB_Sound.wav")
+# change it to 0.3
+sb_sound.set_volume(0.15)
+
 dh_sound = pygame.mixer.Sound("sounds/Haunter_Died.wav")
 # change it to 0.3
 dh_sound.set_volume(0.2)
@@ -291,7 +301,7 @@ fireballs = []
 faintballs = []
 
 gv.haunters_level_1 = []
-gv.haunters_level_1.append(Haunter([260, 50]))
+gv.haunters_level_1.append(Haunter([50, 50]))
 gv.haunters_level_1.append(Haunter([120, -500]))
 
 min_haunter_width, min_haunter_height, gv.max_haunter_width, gv.max_haunter_height = get_max_min_haunter_width_height()
@@ -390,6 +400,7 @@ while not done:
         if event.type == HAUNTER_FIRE_EVENT:
             for haunter in gv.haunters_level_1:
                 if haunter.can_move and haunter.is_alive:
+                    sb_sound.play()
                     faintball_1 = FaintBall()
 
                     add_n = 20
@@ -579,6 +590,58 @@ while not done:
             level_display_counter = 0
             reset_level()
 
+        for fireball in fireballs:
+            if -50 < fireball.x_coord < gv.size[0] + 50 and -50 < fireball.y_coord < gv.size[1] + 50:
+                fireball.x_coord += fireball.x_speed
+                fireball.y_coord += fireball.y_speed
+
+            # Check if Haunters are going to be killed.
+            for haunter in gv.haunters_level_1:
+                temp_val_x = haunter.x_coord + int(haunter.width) / 2
+                temp_val_y = haunter.y_coord + int(haunter.height) / 2
+                if temp_val_x - 30 < fireball.x_coord < temp_val_x + 30 and \
+                        temp_val_y - 30 < fireball.y_coord < temp_val_y + 30 and \
+                        haunter.is_alive:
+                    haunter.is_alive = False
+                    dh_sound.play()
+                    score += 100
+                    dead_ghost_counter = 1
+                    fireball.x_coord = -55
+                    fireball.y_coord = -55
+                    x_appear = haunter.x_coord - 40
+                    y_appear = haunter.y_coord - 10
+                    if 0 < dead_ghost_counter <= 4:
+                        change_dead_ghost()
+                        screen.blit(dead_ghost, [x_appear, y_appear])
+
+                for l1 in level_1_objects:
+                    if l1.coords[0] - 10 < fireball.x_coord < l1.coords[0] + l1.width + 10 and \
+                            l1.coords[1] - 10 < fireball.y_coord < l1.coords[1] + l1.height + 10:
+                        fireball.x_coord = gv.size[0] + 55
+                        fireball.y_coord = gv.size[1] + 55
+
+        for faintball in faintballs:
+            if -50 < faintball.x_coord < gv.size[0] + 50 and -50 < faintball.y_coord < gv.size[1] + 50:
+                faintball.x_coord += faintball.x_speed
+                faintball.y_coord += faintball.y_speed
+
+                # Check if Player are going to lose a life.
+                for haunter in gv.haunters_level_1:
+                    temp_val_x = gv.x_coord + int(player_width) / 2
+                    temp_val_y = gv.y_coord + int(player_height) / 2
+                    # -60, +60, -50, +80
+                    if temp_val_x - 60 < faintball.x_coord < temp_val_x + 140 and \
+                            temp_val_y - 50 < faintball.y_coord < temp_val_y + 70:
+                        faintball.x_coord = -55
+                        faintball.y_coord = -55
+                        lives -= 1
+
+                for l1 in level_1_objects:
+                    if l1.coords[0] - 10 < faintball.x_coord < l1.coords[0] + l1.width + 10 and \
+                            l1.coords[1] - 10 < faintball.y_coord < l1.coords[1] + l1.height + 10:
+                        faintball.x_coord = gv.size[0] + 55
+                        faintball.y_coord = gv.size[1] + 55
+
     # Screen Projection
     if is_start_screen:
         screen.blit(start_screen_image, (0, 0))
@@ -606,57 +669,11 @@ while not done:
 
         for fireball in fireballs:
             if -50 < fireball.x_coord < gv.size[0] + 50 and -50 < fireball.y_coord < gv.size[1] + 50:
-                fireball.x_coord += fireball.x_speed
-                fireball.y_coord += fireball.y_speed
                 screen.blit(fireball.get(), [fireball.x_coord, fireball.y_coord])
-
-            # Check if Haunters are going to be killed.
-            for haunter in gv.haunters_level_1:
-                temp_val_x = haunter.x_coord + int(haunter.width) / 2
-                temp_val_y = haunter.y_coord + int(haunter.height) / 2
-                if temp_val_x - 30 < fireball.x_coord < temp_val_x + 30 and \
-                        temp_val_y - 30 < fireball.y_coord < temp_val_y + 30 and \
-                        haunter.is_alive:
-                    haunter.is_alive = False
-                    dh_sound.play()
-                    score += 100
-                    dead_ghost_counter = 1
-                    fireball.x_coord = -55
-                    fireball.y_coord = -55
-                    x_appear = haunter.x_coord - 40
-                    y_appear = haunter.y_coord - 10
-                    if 0 < dead_ghost_counter <= 4:
-                        change_dead_ghost()
-                        screen.blit(dead_ghost, [x_appear, y_appear])
-
-            for l1 in level_1_objects:
-                if l1.coords[0] - 10 < fireball.x_coord < l1.coords[0] + l1.width + 10 and \
-                        l1.coords[1] - 10 < fireball.y_coord < l1.coords[1] + l1.height + 10:
-                    fireball.x_coord = gv.size[0] + 55
-                    fireball.y_coord = gv.size[1] + 55
 
         for faintball in faintballs:
             if -50 < faintball.x_coord < gv.size[0] + 50 and -50 < faintball.y_coord < gv.size[1] + 50:
-                faintball.x_coord += faintball.x_speed
-                faintball.y_coord += faintball.y_speed
                 screen.blit(faintball.get(), [faintball.x_coord, faintball.y_coord])
-
-                # Check if Player are going to lose a life.
-                for haunter in gv.haunters_level_1:
-                    temp_val_x = gv.x_coord + int(player_width) / 2
-                    temp_val_y = gv.y_coord + int(player_height) / 2
-                    # -60, +60, -50, +80
-                    if temp_val_x - 60 < faintball.x_coord < temp_val_x + 140 and \
-                            temp_val_y - 50 < faintball.y_coord < temp_val_y + 70:
-                        faintball.x_coord = -55
-                        faintball.y_coord = -55
-                        lives -= 1
-
-                for l1 in level_1_objects:
-                    if l1.coords[0] - 10 < faintball.x_coord < l1.coords[0] + l1.width + 10 and \
-                            l1.coords[1] - 10 < faintball.y_coord < l1.coords[1] + l1.height + 10:
-                        faintball.x_coord = gv.size[0] + 55
-                        faintball.y_coord = gv.size[1] + 55
 
         for haunter in gv.haunters_level_1:
             if haunter.is_alive and gv.level_num == 1:
