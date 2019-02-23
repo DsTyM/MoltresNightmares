@@ -251,8 +251,6 @@ BLUE = (0, 0, 255)
 BLUE_2 = (36, 68, 125)
 GREEN_2 = (30, 102, 17)
 
-# bullets.pop(bullets.index(bullet))
-
 pygame.init()
 
 gv.level_num = 1
