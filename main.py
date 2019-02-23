@@ -504,7 +504,7 @@ while not done:
             # Figure out if it was an arrow key.
             # If so, adjust speed.
 
-            if not is_start_screen and not is_pause and lives != 0:
+            if not is_start_screen and not is_pause and lives != 0 and b_lives != 0:
                 select_direction()
 
                 if gv.x_coord > gv.size[0] - 40:
@@ -569,7 +569,7 @@ while not done:
 
     # --- Game logic should go here
 
-    if not is_start_screen and not is_pause and lives != 0:
+    if not is_start_screen and not is_pause and lives != 0 and b_lives != 0:
         gengar_move_time = (gengar_move_time + 1) % 60
 
         # Let Haunters Move
@@ -770,11 +770,11 @@ while not done:
         screen.blit(text1, [gv.size[1] / 2 + 50, gv.size[0] / 4])
         level_display_counter += 1
     elif lives == 0:
-        screen.fill(BLACK)
+        screen.blit(start_screen_image, (0, 0))
         text1 = level_display_font.render('You lose!', True, WHITE)
         screen.blit(text1, [gv.size[1] / 2 + 35, gv.size[0] / 4])
     elif b_lives == 0 and time_counter > 300:
-        screen.fill(BLACK)
+        screen.blit(start_screen_image, (0, 0))
         text1 = level_display_font.render('You win!', True, WHITE)
         screen.blit(text1, [gv.size[1] / 2 + 35, gv.size[0] / 4])
         text1 = level_display_font.render('Score: ' + str(score), True, WHITE)
