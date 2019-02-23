@@ -340,6 +340,7 @@ stairs_dim = [int(gv.size[0] / 2) - 65,
               y_away_from_beginning + 1 - (12 * 2 * ForrestPart("up").size_fact * 12) * level_loops_fact - 15 + 55]
 
 # lives must be an even number (at declaration)
+# Player Lives
 lives = 8
 heart = pygame.image.load("images/heart.png").convert_alpha()
 heart_fact = 0.2
@@ -355,6 +356,21 @@ for i in range(int(lives / 2)):
 for i in range(int(lives / 2)):
     heart_dim_list.append([gv.size[0] - 210 - (i * 35), 32])
 
+# Final Boss Lives
+b_lives = 4
+b_heart = pygame.image.load("images/blue_heart.png").convert_alpha()
+b_heart_width = b_heart.get_rect().width
+b_heart_height = b_heart.get_rect().height
+b_heart = pygame.transform.scale(b_heart, (int(b_heart_width * heart_fact),
+                                           int(b_heart_height * heart_fact)))
+b_heart_width = b_heart.get_rect().width
+b_heart_height = b_heart.get_rect().height
+b_heart_dim_list = []
+for i in range(int(b_lives / 2)):
+    b_heart_dim_list.append([70 + (i * 35), 3])
+for i in range(int(b_lives / 2)):
+    b_heart_dim_list.append([70 + (i * 35), 32])
+
 dg_fact = 2.5
 dead_ghost = None
 dead_ghost_counter = 0
@@ -364,6 +380,8 @@ pressed_keys = []
 gengar = Gengar([int(gv.size[0] / 2) - 65,
                  y_away_from_beginning + 1 - (12 * 2 * ForrestPart("up").size_fact * 12) * level_loops_fact - 15 + 150])
 gengar.is_alive = False
+
+time_counter = 0
 
 # Level Objects
 
@@ -655,6 +673,8 @@ while not done:
                 gv.x_coord -= x_speed
                 gv.y_coord -= y_speed
 
+        time_counter = (time_counter + 1) % 36000
+
         # Check for level change
         if stairs_dim[0] - 80 < gv.x_coord < stairs_dim[0] + 80 and \
                 stairs_dim[1] - 80 < gv.y_coord < stairs_dim[1] and gv.level_num == 1:
@@ -693,23 +713,28 @@ while not done:
             if temp_val_x - 30 < fireball.x_coord < temp_val_x + 30 and \
                     temp_val_y - 30 < fireball.y_coord < temp_val_y + 30 and \
                     gengar.is_alive:
-                gengar.is_alive = False
-                dh_sound.play()
-                score += 500
-                dead_ghost_counter = 1
-                fireball.x_coord = -55
-                fireball.y_coord = -55
-                x_appear = gengar.x_coord - 40
-                y_appear = gengar.y_coord - 10
-                if 0 < dead_ghost_counter <= 4:
-                    change_dead_ghost()
-                    screen.blit(dead_ghost, [x_appear, y_appear])
+                if b_lives > 0:
+                    b_lives -= 1
+                    fireball.x_coord = -55
+                    fireball.y_coord = -55
 
-                for l1 in level_1_objects:
-                    if l1.coords[0] - 10 < fireball.x_coord < l1.coords[0] + l1.width + 10 and \
-                            l1.coords[1] - 10 < fireball.y_coord < l1.coords[1] + l1.height + 10:
-                        fireball.x_coord = gv.size[0] + 55
-                        fireball.y_coord = gv.size[1] + 55
+                if b_lives == 0:
+                    gengar.is_alive = False
+                    dh_sound.play()
+                    time_counter = 0
+                    score += 500
+                    dead_ghost_counter = 1
+                    x_appear = gengar.x_coord - 40
+                    y_appear = gengar.y_coord - 10
+                    if 0 < dead_ghost_counter <= 4:
+                        change_dead_ghost()
+                        screen.blit(dead_ghost, [x_appear, y_appear])
+
+                    for l1 in level_1_objects:
+                        if l1.coords[0] - 10 < fireball.x_coord < l1.coords[0] + l1.width + 10 and \
+                                l1.coords[1] - 10 < fireball.y_coord < l1.coords[1] + l1.height + 10:
+                            fireball.x_coord = gv.size[0] + 55
+                            fireball.y_coord = gv.size[1] + 55
 
         for faintball in faintballs:
             if -50 < faintball.x_coord < gv.size[0] + 50 and -50 < faintball.y_coord < gv.size[1] + 50:
@@ -748,6 +773,12 @@ while not done:
         screen.fill(BLACK)
         text1 = level_display_font.render('You lose!', True, WHITE)
         screen.blit(text1, [gv.size[1] / 2 + 35, gv.size[0] / 4])
+    elif b_lives == 0 and time_counter > 300:
+        screen.fill(BLACK)
+        text1 = level_display_font.render('You win!', True, WHITE)
+        screen.blit(text1, [gv.size[1] / 2 + 35, gv.size[0] / 4])
+        text1 = level_display_font.render('Score: ' + str(score), True, WHITE)
+        screen.blit(text1, [gv.size[1] / 2 + 35, gv.size[0] / 4 + 100])
     else:
         screen.fill(BLACK)
 
@@ -781,10 +812,14 @@ while not done:
         score_text = score_display_font.render('Score: ' + str(score), True, WHITE)
         screen.blit(score_text, [gv.size[0] - 170, 10])
 
-        hearts_down_line = True
         for i in range(lives):
             dims = heart_dim_list[i]
             screen.blit(heart, dims)
+
+        if gv.level_num == 2:
+            for i in range(b_lives):
+                dims = b_heart_dim_list[i]
+                screen.blit(b_heart, dims)
 
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
