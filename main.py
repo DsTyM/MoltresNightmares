@@ -387,7 +387,7 @@ time_counter = 0
 
 # Level 1
 level_1_objects = []
-level_1_objects.append(LevelObject("tree.png", [550, 10], 1.8))
+level_1_objects.append(LevelObject(1, "tree_1.png", [550, 10], 1.8))
 
 y_away_from_beginning_max = (gv.size[1] + 2) * level_loops_fact
 
@@ -730,11 +730,11 @@ while not done:
                         change_dead_ghost()
                         screen.blit(dead_ghost, [x_appear, y_appear])
 
-                    for l1 in level_1_objects:
-                        if l1.coords[0] - 10 < fireball.x_coord < l1.coords[0] + l1.width + 10 and \
-                                l1.coords[1] - 10 < fireball.y_coord < l1.coords[1] + l1.height + 10:
-                            fireball.x_coord = gv.size[0] + 55
-                            fireball.y_coord = gv.size[1] + 55
+            for l1 in level_1_objects:
+                if l1.coords[0] - 10 < fireball.x_coord < l1.coords[0] + l1.width + 10 and \
+                        l1.coords[1] - 10 < fireball.y_coord < l1.coords[1] + l1.height + 10:
+                    fireball.x_coord = gv.size[0] + 55
+                    fireball.y_coord = gv.size[1] + 55
 
         for faintball in faintballs:
             if -50 < faintball.x_coord < gv.size[0] + 50 and -50 < faintball.y_coord < gv.size[1] + 50:

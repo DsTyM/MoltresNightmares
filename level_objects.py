@@ -2,12 +2,14 @@ import pygame
 
 
 class LevelObject:
-    def __init__(self, image_name, coords, size_fact=1.0):
+    def __init__(self, level_num, image_name, coords, size_fact=1.0):
+        self.level_num = level_num
         self.image_name = image_name
         self.coords = coords
         self.size_fact = size_fact
 
-        self.source = pygame.image.load("images/objects/" + self.image_name).convert_alpha()
+        self.source = pygame.image.load("images/objects/level_" + str(self.level_num) + "/" +
+                                        self.image_name).convert_alpha()
         self.width = self.source.get_rect().width
         self.height = self.source.get_rect().height
 
