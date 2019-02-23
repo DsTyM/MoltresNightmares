@@ -178,8 +178,8 @@ def reset_level():
 
     tree_dim = [600, -150]
 
-    stairs_dim = [int(gv.size[0] / 2),
-                  y_away_from_beginning + 1 - (11 * 2 * ForrestPart("up").size_fact * 12) * level_loops_fact - 15]
+    stairs_dim = [int(gv.size[0] / 2) - 65,
+                  y_away_from_beginning + 1 - (12 * 2 * ForrestPart("up").size_fact * 12) * level_loops_fact - 15 + 55]
 
     # Forrest
 
@@ -304,13 +304,10 @@ fireballs = []
 faintballs = []
 
 gv.haunters_level_1 = []
-gv.haunters_level_1.append(Haunter([50, 50]))
-gv.haunters_level_1.append(Haunter([120, -500]))
+# gv.haunters_level_1.append(Haunter([50, 50]))
+# gv.haunters_level_1.append(Haunter([120, -500]))
 
 min_haunter_width, min_haunter_height, gv.max_haunter_width, gv.max_haunter_height = get_max_min_haunter_width_height()
-
-gengar = Gengar([150, 60])
-gengar.is_alive = False
 
 # Speed in pixels per frame
 x_speed, y_speed = 0, 0
@@ -335,14 +332,14 @@ pygame.time.set_timer(ENEMY_FIRE_EVENT, 1500)
 forrest_parts = []
 level_loops_fact = 6
 
-st_fact = ForrestPart("up").size_fact * 1.5
+st_fact = ForrestPart("up").size_fact * 3
 stairs = pygame.image.load("images/stairs.png").convert_alpha()
 stairs_width = stairs.get_rect().width
 stairs_height = stairs.get_rect().height
 stairs = pygame.transform.scale(stairs, (int(stairs_width * st_fact),
                                          int(stairs_height * st_fact)))
-stairs_dim = [int(gv.size[0] / 2),
-              y_away_from_beginning + 1 - (11 * 2 * ForrestPart("up").size_fact * 12) * level_loops_fact - 15]
+stairs_dim = [int(gv.size[0] / 2) - 65,
+              y_away_from_beginning + 1 - (12 * 2 * ForrestPart("up").size_fact * 12) * level_loops_fact - 15 + 55]
 
 # lives must be an even number (at declaration)
 lives = 8
@@ -365,6 +362,10 @@ dead_ghost = None
 dead_ghost_counter = 0
 
 pressed_keys = []
+
+gengar = Gengar([int(gv.size[0] / 2) - 65,
+                 y_away_from_beginning + 1 - (12 * 2 * ForrestPart("up").size_fact * 12) * level_loops_fact - 15 + 150])
+gengar.is_alive = False
 
 # Level Objects
 
@@ -657,11 +658,12 @@ while not done:
                 gv.y_coord -= y_speed
 
         # Check for level change
-        if stairs_dim[0] - 80 < gv.x_coord < stairs_dim[0] - 20 and \
-                stairs_dim[1] - 70 < gv.y_coord < stairs_dim[1] - 50 and gv.level_num < 3:
+        if stairs_dim[0] - 80 < gv.x_coord < stairs_dim[0] + 80 and \
+                stairs_dim[1] - 80 < gv.y_coord < stairs_dim[1] and gv.level_num == 1:
             gv.level_num += 1
             level_display_counter = 0
             reset_level()
+            gengar.is_alive = True
 
         for fireball in fireballs:
             if -50 < fireball.x_coord < gv.size[0] + 50 and -50 < fireball.y_coord < gv.size[1] + 50:
@@ -754,7 +756,8 @@ while not done:
         for forrest_part in forrest_parts:
             screen.blit(forrest_part.get(), [forrest_part.x_coord, forrest_part.y_coord])
 
-        screen.blit(stairs, stairs_dim)
+        if gv.level_num == 1:
+            screen.blit(stairs, stairs_dim)
 
         if gv.level_num == 1:
             for level_1_object in level_1_objects:
