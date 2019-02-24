@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2290658-c6ac-40c7-8846-d15115335066" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/images/objects/level_2/statue_1r.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global_variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/global_variables.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/objects/level_2/pokemon_sleeping_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/objects/level_2/pokemon_sleeping_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/objects/level_2/statue_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/objects/level_2/statue_1l.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,7 +20,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Moltres_Nightmares$Main.coverage" NAME="Main Coverage Results" MODIFIED="1548381542505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Moltres_Nightmares$main.coverage" NAME="main Coverage Results" MODIFIED="1551014431577" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Moltres_Nightmares$main.coverage" NAME="main Coverage Results" MODIFIED="1551042794109" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Graphics_Game$Main.coverage" NAME="Main Coverage Results" MODIFIED="1548122399052" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -24,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="749" lean-forward="true" selection-start-line="749" selection-end-line="749" />
+            <state relative-caret-position="108">
+              <caret line="451" column="61" selection-start-line="451" selection-start-column="61" selection-end-line="451" selection-end-column="61" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -66,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/enemy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2583">
-              <caret line="125" selection-start-line="125" selection-end-line="125" />
+            <state relative-caret-position="567">
+              <caret line="126" column="16" lean-forward="true" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -79,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/global_variables.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="63">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+              <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -92,6 +96,12 @@
         <option value="Python Script" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>level_n</find>
+      <find>gengar.is</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -116,6 +126,7 @@
         <option value="$PROJECT_DIR$/ball.py" />
         <option value="$PROJECT_DIR$/enemy.py" />
         <option value="$PROJECT_DIR$/level_objects.py" />
+        <option value="$PROJECT_DIR$/global_variables.py" />
         <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
@@ -133,7 +144,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -146,10 +156,17 @@
               <item name="Graphics_Game" type="462c0819:PsiDirectoryNode" />
               <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Moltres Nightmares" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Graphics_Game" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="objects" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -162,19 +179,19 @@
     <option name="SHOW_DIALOG" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\objects\level_2" />
+      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\objects" />
+      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images" />
+      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\sounds" />
+      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\Levels" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\objects\level_1" />
       <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\sounds" />
       <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images" />
       <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\objects" />
       <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\Levels" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\objects" />
-      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images" />
-      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\sounds" />
-      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\Levels" />
-      <recent name="C:\Users\stavr\Documents\PyCharm Projects\Graphics_Game\images\Forrest\alt_2" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -326,7 +343,8 @@
       <workItem from="1550933951002" duration="4728000" />
       <workItem from="1550950549168" duration="800000" />
       <workItem from="1550955145584" duration="744000" />
-      <workItem from="1551010162473" duration="4266000" />
+      <workItem from="1551010162473" duration="5479000" />
+      <workItem from="1551030647733" duration="9394000" />
     </task>
     <task id="LOCAL-00001" summary="Test Commit">
       <created>1548226514949</created>
@@ -538,17 +556,24 @@
       <option name="project" value="LOCAL" />
       <updated>1550955603745</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="objects added to map">
+      <created>1551014528114</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1551014528114</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143478000" />
+    <option name="totallyTimeSpent" value="154085000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20149253" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20362474" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -619,7 +644,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="First Commit from PyCharm" />
     <MESSAGE value="Bad Fix of Haunters covering one another" />
     <MESSAGE value="Fix #2 for Haunters covering one another" />
     <MESSAGE value="reformating" />
@@ -644,7 +668,8 @@
     <MESSAGE value="final boss lives added" />
     <MESSAGE value="fixing &quot;You Win!&quot;" />
     <MESSAGE value="adding sprite images" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding sprite images" />
+    <MESSAGE value="objects added to map" />
+    <option name="LAST_COMMIT_MESSAGE" value="objects added to map" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/images/objects/level_1/tree_1.png">
@@ -683,16 +708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="749" lean-forward="true" selection-start-line="749" selection-end-line="749" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ball.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="609">
@@ -717,20 +732,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/global_variables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/enemy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2583">
-          <caret line="125" selection-start-line="125" selection-end-line="125" />
+        <state relative-caret-position="567">
+          <caret line="126" column="16" lean-forward="true" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="16" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/global_variables.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        <state relative-caret-position="108">
+          <caret line="451" column="61" selection-start-line="451" selection-start-column="61" selection-end-line="451" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

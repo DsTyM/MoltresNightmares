@@ -256,7 +256,7 @@ GREEN_2 = (30, 102, 17)
 
 pygame.init()
 
-gv.level_num = 1
+gv.level_num = 2
 
 # Set the width and height of the screen [width, height]
 gv.size = (816, 574)
@@ -307,6 +307,21 @@ faintballs = []
 gv.haunters_level_1 = []
 # gv.haunters_level_1.append(Haunter([50, -100]))
 # gv.haunters_level_1.append(Haunter([600, -160]))
+# gv.haunters_level_1.append(Haunter([670, -600]))
+# gv.haunters_level_1.append(Haunter([500, -680]))
+# gv.haunters_level_1.append(Haunter([50, -720]))
+# gv.haunters_level_1.append(Haunter([210, -1050]))
+# gv.haunters_level_1.append(Haunter([130, -1300]))
+# gv.haunters_level_1.append(Haunter([650, -1300]))
+# gv.haunters_level_1.append(Haunter([200, -1750]))
+# gv.haunters_level_1.append(Haunter([400, -1800]))
+# gv.haunters_level_1.append(Haunter([70, -2550]))
+# gv.haunters_level_1.append(Haunter([550, -2550]))
+# gv.haunters_level_1.append(Haunter([150, -2300]))
+# gv.haunters_level_1.append(Haunter([650, -2300]))
+# gv.haunters_level_1.append(Haunter([375, -2425]))
+
+gv.haunters_level_2 = []
 
 min_haunter_width, min_haunter_height, gv.max_haunter_width, gv.max_haunter_height = get_max_min_haunter_width_height()
 
@@ -396,16 +411,45 @@ level_1_objects.append(LevelObject(1, "tree_1.png", [60, 10], 1.8))
 level_1_objects.append(LevelObject(1, "house_1.png", [50, -600], 1.5))
 level_1_objects.append(LevelObject(1, "tree_1.png", [550, -1200], 1.8))
 level_1_objects.append(LevelObject(1, "tree_2.png", [550, -950], 2))
-level_1_objects.append(LevelObject(1, "house_2.png", [50, -1200], 1.8))
-level_1_objects.append(LevelObject(1, "tree_3.png", [50, -1700], 3))
-level_1_objects.append(LevelObject(1, "tree_4.png", [50, -1450], 3))
+level_1_objects.append(LevelObject(1, "house_2.png", [300, -1150], 1.8))
+level_1_objects.append(LevelObject(1, "tree_3.png", [50, -1800], 3))
+level_1_objects.append(LevelObject(1, "tree_4.png", [50, -1550], 3))
 level_1_objects.append(LevelObject(1, "house_6.png", [500, -1700], 1.8))
 level_1_objects.append(LevelObject(1, "house_5.png", [50, -2200], 1.8))
-level_1_objects.append(LevelObject(1, "house_7.png", [550, -2150], 1.8))
+level_1_objects.append(LevelObject(1, "house_7.png", [350, -2150], 1.8))
 level_1_objects.append(LevelObject(1, "tree_5.png", [50, -2860], 2))
 level_1_objects.append(LevelObject(1, "tree_6.png", [550, -2860], 2))
 
 level_2_objects = []
+level_2_objects.append(LevelObject(2, "object_1.png", [65, 350], 1.8))
+level_2_objects.append(LevelObject(2, "pokemon_sleeping_1.png", [650, 380], 5))
+level_2_objects.append(LevelObject(2, "column_1.png", [550, 175], 5))
+level_2_objects.append(LevelObject(2, "column_1.png", [170, 175], 5))
+level_2_objects.append(LevelObject(2, "barrel_1.png", [70, -150], 1))
+level_2_objects.append(LevelObject(2, "barrel_2.png", [600, -150], 0.25))
+level_2_objects.append(LevelObject(2, "statue_2.png", [100, -600], 4))
+level_2_objects.append(LevelObject(2, "statue_3.png", [100, -750], 4.3))
+level_2_objects.append(LevelObject(2, "statue_2.png", [300, -750], 4))
+level_2_objects.append(LevelObject(2, "statue_3.png", [300, -500], 4.3))
+level_2_objects.append(LevelObject(2, "rock_2.png", [620, -1300], 1))
+level_2_objects.append(LevelObject(2, "rock_3.png", [620, -1150], 1.6))
+level_2_objects.append(LevelObject(2, "rock_3.png", [620, -1450], 1.6))
+level_2_objects.append(LevelObject(2, "rock_2.png", [460, -1300], 1))
+level_2_objects.append(LevelObject(2, "rock_3.png", [460, -1150], 1.6))
+level_2_objects.append(LevelObject(2, "rock_3.png", [460, -1450], 1.6))
+level_2_objects.append(LevelObject(2, "rock_2.png", [300, -1300], 1))
+level_2_objects.append(LevelObject(2, "rock_3.png", [300, -1150], 1.6))
+level_2_objects.append(LevelObject(2, "rock_3.png", [300, -1450], 1.6))
+level_2_objects.append(LevelObject(2, "object_2.png", [70, -1850], 3.5))
+level_2_objects.append(LevelObject(2, "object_3.png", [630, -1850], 3.5))
+level_2_objects.append(LevelObject(2, "object_2.png", [630, -2050], 3.5))
+level_2_objects.append(LevelObject(2, "object_3.png", [70, -2050], 3.5))
+level_2_objects.append(LevelObject(2, "object_4.png", [70, -2200], 1))
+level_2_objects.append(LevelObject(2, "object_5.png", [180, -2200], 0.8))
+level_2_objects.append(LevelObject(2, "object_5.png", [540, -2200], 0.8))
+level_2_objects.append(LevelObject(2, "object_4.png", [650, -2200], 1))
+level_2_objects.append(LevelObject(2, "statue_1l.png", [100, -2800], 0.5))
+level_2_objects.append(LevelObject(2, "statue_1r.png", [550, -2800], 0.5))
 
 y_away_from_beginning_max = (gv.size[1] + 2) * level_loops_fact
 
@@ -441,42 +485,80 @@ while not done:
                 haunter.change_haunter_move()
 
         if event.type == ENEMY_FIRE_EVENT:
-            for haunter in gv.haunters_level_1:
-                if haunter.can_move and haunter.is_alive and lives != 0 and not is_pause and not is_start_screen:
-                    sb_sound.play()
-                    faintball_1 = FaintBall()
-                    add_n = 20
-                    faintball_1.x_coord, faintball_1.y_coord = haunter.x_coord + add_n, haunter.y_coord + add_n
+            if gv.level_num == 1:
+                for haunter in gv.haunters_level_1:
+                    if haunter.can_move and haunter.is_alive and lives != 0 and not is_pause and not is_start_screen:
+                        sb_sound.play()
+                        faintball_1 = FaintBall()
+                        add_n = 20
+                        faintball_1.x_coord, faintball_1.y_coord = haunter.x_coord + add_n, haunter.y_coord + add_n
 
-                    fb_speed_fact = 3
+                        fb_speed_fact = 3
 
-                    h_dir = haunter.direction
-                    if h_dir == "down":
-                        faintball_1.x_speed = 0
-                        faintball_1.y_speed = fb_speed_fact
-                    elif h_dir == "up":
-                        faintball_1.x_speed = 0
-                        faintball_1.y_speed = -fb_speed_fact
-                    elif h_dir == "right":
-                        faintball_1.x_speed = fb_speed_fact
-                        faintball_1.y_speed = 0
-                    elif h_dir == "left":
-                        faintball_1.x_speed = -fb_speed_fact
-                        faintball_1.y_speed = 0
-                    elif h_dir == "down_right":
-                        faintball_1.x_speed = fb_speed_fact
-                        faintball_1.y_speed = fb_speed_fact
-                    elif h_dir == "down_left":
-                        faintball_1.x_speed = -fb_speed_fact
-                        faintball_1.y_speed = fb_speed_fact
-                    elif h_dir == "up_right":
-                        faintball_1.x_speed = fb_speed_fact
-                        faintball_1.y_speed = -fb_speed_fact
-                    elif h_dir == "up_left":
-                        faintball_1.x_speed = -fb_speed_fact
-                        faintball_1.y_speed = -fb_speed_fact
+                        h_dir = haunter.direction
+                        if h_dir == "down":
+                            faintball_1.x_speed = 0
+                            faintball_1.y_speed = fb_speed_fact
+                        elif h_dir == "up":
+                            faintball_1.x_speed = 0
+                            faintball_1.y_speed = -fb_speed_fact
+                        elif h_dir == "right":
+                            faintball_1.x_speed = fb_speed_fact
+                            faintball_1.y_speed = 0
+                        elif h_dir == "left":
+                            faintball_1.x_speed = -fb_speed_fact
+                            faintball_1.y_speed = 0
+                        elif h_dir == "down_right":
+                            faintball_1.x_speed = fb_speed_fact
+                            faintball_1.y_speed = fb_speed_fact
+                        elif h_dir == "down_left":
+                            faintball_1.x_speed = -fb_speed_fact
+                            faintball_1.y_speed = fb_speed_fact
+                        elif h_dir == "up_right":
+                            faintball_1.x_speed = fb_speed_fact
+                            faintball_1.y_speed = -fb_speed_fact
+                        elif h_dir == "up_left":
+                            faintball_1.x_speed = -fb_speed_fact
+                            faintball_1.y_speed = -fb_speed_fact
 
-                    faintballs.append(faintball_1)
+                        faintballs.append(faintball_1)
+            elif gv.level_num == 2:
+                for haunter in gv.haunters_level_2:
+                    if haunter.can_move and haunter.is_alive and lives != 0 and not is_pause and not is_start_screen:
+                        sb_sound.play()
+                        faintball_1 = FaintBall()
+                        add_n = 20
+                        faintball_1.x_coord, faintball_1.y_coord = haunter.x_coord + add_n, haunter.y_coord + add_n
+
+                        fb_speed_fact = 3
+
+                        h_dir = haunter.direction
+                        if h_dir == "down":
+                            faintball_1.x_speed = 0
+                            faintball_1.y_speed = fb_speed_fact
+                        elif h_dir == "up":
+                            faintball_1.x_speed = 0
+                            faintball_1.y_speed = -fb_speed_fact
+                        elif h_dir == "right":
+                            faintball_1.x_speed = fb_speed_fact
+                            faintball_1.y_speed = 0
+                        elif h_dir == "left":
+                            faintball_1.x_speed = -fb_speed_fact
+                            faintball_1.y_speed = 0
+                        elif h_dir == "down_right":
+                            faintball_1.x_speed = fb_speed_fact
+                            faintball_1.y_speed = fb_speed_fact
+                        elif h_dir == "down_left":
+                            faintball_1.x_speed = -fb_speed_fact
+                            faintball_1.y_speed = fb_speed_fact
+                        elif h_dir == "up_right":
+                            faintball_1.x_speed = fb_speed_fact
+                            faintball_1.y_speed = -fb_speed_fact
+                        elif h_dir == "up_left":
+                            faintball_1.x_speed = -fb_speed_fact
+                            faintball_1.y_speed = -fb_speed_fact
+
+                        faintballs.append(faintball_1)
 
             if gengar.can_move and gengar.is_alive and lives != 0 and not is_pause and not is_start_screen:
                 sb_sound.play()
