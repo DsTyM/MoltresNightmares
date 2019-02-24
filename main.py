@@ -160,6 +160,9 @@ def move_platform(platform_dir=""):
     if gv.level_num == 1:
         for l_1_object in level_1_objects:
             l_1_object.coords[1] += temp_num
+    elif gv.level_num == 2:
+        for l_2_object in level_2_objects:
+            l_2_object.coords[1] += temp_num
 
     for fireball in fireballs:
         fireball.y_coord += temp_num
@@ -302,8 +305,8 @@ fireballs = []
 faintballs = []
 
 gv.haunters_level_1 = []
-# gv.haunters_level_1.append(Haunter([50, 50]))
-# gv.haunters_level_1.append(Haunter([120, -500]))
+# gv.haunters_level_1.append(Haunter([50, -100]))
+# gv.haunters_level_1.append(Haunter([600, -160]))
 
 min_haunter_width, min_haunter_height, gv.max_haunter_width, gv.max_haunter_height = get_max_min_haunter_width_height()
 
@@ -387,7 +390,22 @@ time_counter = 0
 
 # Level 1
 level_1_objects = []
+level_1_objects.append(LevelObject(1, "object_1.png", [100, 300], 1.8))
 level_1_objects.append(LevelObject(1, "tree_1.png", [550, 10], 1.8))
+level_1_objects.append(LevelObject(1, "tree_1.png", [60, 10], 1.8))
+level_1_objects.append(LevelObject(1, "house_1.png", [50, -600], 1.5))
+level_1_objects.append(LevelObject(1, "tree_1.png", [550, -1200], 1.8))
+level_1_objects.append(LevelObject(1, "tree_2.png", [550, -950], 2))
+level_1_objects.append(LevelObject(1, "house_2.png", [50, -1200], 1.8))
+level_1_objects.append(LevelObject(1, "tree_3.png", [50, -1700], 3))
+level_1_objects.append(LevelObject(1, "tree_4.png", [50, -1450], 3))
+level_1_objects.append(LevelObject(1, "house_6.png", [500, -1700], 1.8))
+level_1_objects.append(LevelObject(1, "house_5.png", [50, -2200], 1.8))
+level_1_objects.append(LevelObject(1, "house_7.png", [550, -2150], 1.8))
+level_1_objects.append(LevelObject(1, "tree_5.png", [50, -2860], 2))
+level_1_objects.append(LevelObject(1, "tree_6.png", [550, -2860], 2))
+
+level_2_objects = []
 
 y_away_from_beginning_max = (gv.size[1] + 2) * level_loops_fact
 
@@ -599,11 +617,18 @@ while not done:
                 haunter.x_coord += haunter.x_speed
                 haunter.y_coord += haunter.y_speed
 
-            for l1 in level_1_objects:
-                if l1.coords[1] - 35 < haunter.y_coord + gv.max_haunter_height < l1.coords[1] + l1.height and \
-                        l1.coords[0] - 45 < haunter.x_coord + gv.max_haunter_width < l1.coords[0] + l1.width + 30:
-                    haunter.x_coord -= haunter.x_speed
-                    haunter.y_coord -= haunter.y_speed
+            if gv.level_num == 1:
+                for l1 in level_1_objects:
+                    if l1.coords[1] - 35 < haunter.y_coord + gv.max_haunter_height < l1.coords[1] + l1.height and \
+                            l1.coords[0] - 45 < haunter.x_coord + gv.max_haunter_width < l1.coords[0] + l1.width + 30:
+                        haunter.x_coord -= haunter.x_speed
+                        haunter.y_coord -= haunter.y_speed
+            elif gv.level_num == 2:
+                for l1 in level_2_objects:
+                    if l1.coords[1] - 35 < haunter.y_coord + gv.max_haunter_height < l1.coords[1] + l1.height and \
+                            l1.coords[0] - 45 < haunter.x_coord + gv.max_haunter_width < l1.coords[0] + l1.width + 30:
+                        haunter.x_coord -= haunter.x_speed
+                        haunter.y_coord -= haunter.y_speed
 
         # Gengar AI
         if not gengar.can_move and gengar.y_coord > 0:
@@ -667,13 +692,18 @@ while not done:
                     gv.y_coord += y_speed
                 else:
                     move_platform("down")
-        for l1 in level_1_objects:
-            if l1.coords[1] - 75 < gv.y_coord + max_player_height < l1.coords[1] + l1.height and \
-                    l1.coords[0] - 70 < gv.x_coord + max_player_width < l1.coords[0] + l1.width + 50:
-                gv.x_coord -= x_speed
-                gv.y_coord -= y_speed
-
-        time_counter = (time_counter + 1) % 36000
+        if gv.level_num == 1:
+            for l1 in level_1_objects:
+                if l1.coords[1] - 75 < gv.y_coord + max_player_height < l1.coords[1] + l1.height and \
+                        l1.coords[0] - 70 < gv.x_coord + max_player_width < l1.coords[0] + l1.width + 50:
+                    gv.x_coord -= x_speed
+                    gv.y_coord -= y_speed
+        elif gv.level_num == 2:
+            for l1 in level_2_objects:
+                if l1.coords[1] - 75 < gv.y_coord + max_player_height < l1.coords[1] + l1.height and \
+                        l1.coords[0] - 70 < gv.x_coord + max_player_width < l1.coords[0] + l1.width + 50:
+                    gv.x_coord -= x_speed
+                    gv.y_coord -= y_speed
 
         # Check for level change
         if stairs_dim[0] - 80 < gv.x_coord < stairs_dim[0] + 80 and \
@@ -712,7 +742,7 @@ while not done:
             temp_val_y = gengar.y_coord + int(gengar.height) / 2
             if temp_val_x - 30 < fireball.x_coord < temp_val_x + 30 and \
                     temp_val_y - 30 < fireball.y_coord < temp_val_y + 30 and \
-                    gengar.is_alive:
+                    gengar.is_alive and gv.level_num == 2:
                 if b_lives > 0:
                     b_lives -= 1
                     fireball.x_coord = -55
@@ -730,11 +760,18 @@ while not done:
                         change_dead_ghost()
                         screen.blit(dead_ghost, [x_appear, y_appear])
 
-            for l1 in level_1_objects:
-                if l1.coords[0] - 10 < fireball.x_coord < l1.coords[0] + l1.width + 10 and \
-                        l1.coords[1] - 10 < fireball.y_coord < l1.coords[1] + l1.height + 10:
-                    fireball.x_coord = gv.size[0] + 55
-                    fireball.y_coord = gv.size[1] + 55
+            if gv.level_num == 1:
+                for l1 in level_1_objects:
+                    if l1.coords[0] - 10 < fireball.x_coord < l1.coords[0] + l1.width + 10 and \
+                            l1.coords[1] - 10 < fireball.y_coord < l1.coords[1] + l1.height + 10:
+                        fireball.x_coord = gv.size[0] + 55
+                        fireball.y_coord = gv.size[1] + 55
+            elif gv.level_num == 2:
+                for l1 in level_2_objects:
+                    if l1.coords[0] - 10 < fireball.x_coord < l1.coords[0] + l1.width + 10 and \
+                            l1.coords[1] - 10 < fireball.y_coord < l1.coords[1] + l1.height + 10:
+                        fireball.x_coord = gv.size[0] + 55
+                        fireball.y_coord = gv.size[1] + 55
 
         for faintball in faintballs:
             if -50 < faintball.x_coord < gv.size[0] + 50 and -50 < faintball.y_coord < gv.size[1] + 50:
@@ -750,11 +787,20 @@ while not done:
                     faintball.y_coord = -55
                     lives -= 1
 
-                for l1 in level_1_objects:
-                    if l1.coords[0] - 10 < faintball.x_coord < l1.coords[0] + l1.width + 10 and \
-                            l1.coords[1] - 10 < faintball.y_coord < l1.coords[1] + l1.height + 10:
-                        faintball.x_coord = gv.size[0] + 55
-                        faintball.y_coord = gv.size[1] + 55
+                if gv.level_num == 1:
+                    for l1 in level_1_objects:
+                        if l1.coords[0] - 10 < faintball.x_coord < l1.coords[0] + l1.width + 10 and \
+                                l1.coords[1] - 10 < faintball.y_coord < l1.coords[1] + l1.height + 10:
+                            faintball.x_coord = gv.size[0] + 55
+                            faintball.y_coord = gv.size[1] + 55
+                elif gv.level_num == 2:
+                    for l1 in level_2_objects:
+                        if l1.coords[0] - 10 < faintball.x_coord < l1.coords[0] + l1.width + 10 and \
+                                l1.coords[1] - 10 < faintball.y_coord < l1.coords[1] + l1.height + 10:
+                            faintball.x_coord = gv.size[0] + 55
+                            faintball.y_coord = gv.size[1] + 55
+
+    time_counter = (time_counter + 1) % 36000
 
     # Screen Projection
     if is_start_screen:
@@ -791,6 +837,9 @@ while not done:
         if gv.level_num == 1:
             for level_1_object in level_1_objects:
                 screen.blit(level_1_object.get(), level_1_object.coords)
+        elif gv.level_num == 2:
+            for level_2_object in level_2_objects:
+                screen.blit(level_2_object.get(), level_2_object.coords)
 
         for fireball in fireballs:
             if -50 < fireball.x_coord < gv.size[0] + 50 and -50 < fireball.y_coord < gv.size[1] + 50:
@@ -824,7 +873,7 @@ while not done:
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
     # --- Limit to 60 frames per second
-    clock.tick(60)
+    clock.tick(180)
 
 # Close the window and quit.
 pygame.quit()
