@@ -324,7 +324,20 @@ gv.haunters_level_1 = []
 # gv.haunters_level_1.append(Haunter([375, -2425]))
 
 gv.haunters_level_2 = []
-gv.haunters_level_2.append(Haunter([50, 50]))
+# gv.haunters_level_2.append(Haunter([50, 10]))
+# gv.haunters_level_2.append(Haunter([650, 10]))
+# gv.haunters_level_2.append(Haunter([80, -250]))
+# gv.haunters_level_2.append(Haunter([690, -250]))
+# gv.haunters_level_2.append(Haunter([370, -350]))
+# gv.haunters_level_2.append(Haunter([370, -350]))
+# gv.haunters_level_2.append(Haunter([450, -600]))
+# gv.haunters_level_2.append(Haunter([50, -820]))
+# gv.haunters_level_2.append(Haunter([310, -950]))
+# gv.haunters_level_2.append(Haunter([650, -1050]))
+# gv.haunters_level_2.append(Haunter([120, -1350]))
+# gv.haunters_level_2.append(Haunter([650, -1650]))
+# gv.haunters_level_2.append(Haunter([215, -1950]))
+# gv.haunters_level_2.append(Haunter([535, -1950]))
 
 min_haunter_width, min_haunter_height, gv.max_haunter_width, gv.max_haunter_height = get_max_min_haunter_width_height()
 
@@ -400,7 +413,7 @@ pressed_keys = []
 
 gengar = Gengar([int(gv.size[0] / 2) - 65,
                  y_away_from_beginning + 1 - (12 * 2 * ForrestPart("up").size_fact * 12) * level_loops_fact - 15 + 150])
-gengar.is_alive = False
+gengar.is_alive = True
 
 time_counter = 0
 
