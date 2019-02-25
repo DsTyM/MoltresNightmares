@@ -272,21 +272,18 @@ pygame.display.set_caption("Moltres Nightmares")
 logo_image = pygame.image.load("images/logo.png").convert_alpha()
 pygame.display.set_icon(logo_image)
 
-# theme_sound = pygame.mixer.Sound("sounds/theme_2.wav")
-# theme_sound.set_volume(0.5)
+# theme_sound = pygame.mixer.Sound("sounds/theme.wav")
+# theme_sound.set_volume(0.8)
 # theme_sound.play(loops=-1)
 
 fb_sound = pygame.mixer.Sound("sounds/FB_Sound.wav")
-# change it to 0.3
-fb_sound.set_volume(0.15)
+fb_sound.set_volume(0.3)
 
 sb_sound = pygame.mixer.Sound("sounds/SB_Sound.wav")
-# change it to 0.3
-sb_sound.set_volume(0.15)
+sb_sound.set_volume(0.3)
 
 dh_sound = pygame.mixer.Sound("sounds/Haunter_Died.wav")
-# change it to 0.3
-dh_sound.set_volume(0.2)
+dh_sound.set_volume(0.5)
 
 # Player Initialization
 p_fact = 2.5
@@ -327,7 +324,7 @@ gv.haunters_level_1 = []
 # gv.haunters_level_1.append(Haunter([375, -2425]))
 
 gv.haunters_level_2 = []
-# gv.haunters_level_2.append(Haunter([50, 50]))
+gv.haunters_level_2.append(Haunter([50, 50]))
 
 min_haunter_width, min_haunter_height, gv.max_haunter_width, gv.max_haunter_height = get_max_min_haunter_width_height()
 
