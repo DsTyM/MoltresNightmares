@@ -147,9 +147,14 @@ def move_platform(platform_dir=""):
 
     y_away_from_beginning += temp_num
     stairs_dim[1] += temp_num
-    for temp_haunter in gv.haunters_level_1:
-        if temp_haunter.is_alive:
-            temp_haunter.y_coord += temp_num
+    if gv.level_num == 1:
+        for temp_haunter in gv.haunters_level_1:
+            if temp_haunter.is_alive:
+                temp_haunter.y_coord += temp_num
+    elif gv.level_num == 2:
+        for temp_haunter in gv.haunters_level_2:
+            if temp_haunter.is_alive:
+                temp_haunter.y_coord += temp_num
 
     if gengar.is_alive:
         gengar.y_coord += temp_num
@@ -322,6 +327,7 @@ gv.haunters_level_1 = []
 # gv.haunters_level_1.append(Haunter([375, -2425]))
 
 gv.haunters_level_2 = []
+# gv.haunters_level_2.append(Haunter([50, 50]))
 
 min_haunter_width, min_haunter_height, gv.max_haunter_width, gv.max_haunter_height = get_max_min_haunter_width_height()
 
@@ -481,8 +487,12 @@ while not done:
             change_player_move()
 
         if event.type == HAUNTER_MOVE_EVENT:
-            for haunter in gv.haunters_level_1:
-                haunter.change_haunter_move()
+            if gv.level_num == 1:
+                for haunter in gv.haunters_level_1:
+                    haunter.change_haunter_move()
+            elif gv.level_num == 2:
+                for haunter in gv.haunters_level_2:
+                    haunter.change_haunter_move()
 
         if event.type == ENEMY_FIRE_EVENT:
             if gv.level_num == 1:
@@ -673,13 +683,28 @@ while not done:
         gengar_move_time = (gengar_move_time + 1) % 60
 
         # Let Haunters Move
-        for haunter in gv.haunters_level_1:
-            if not haunter.can_move:
-                if haunter.y_coord > 0:
-                    haunter.can_move = True
+        if gv.level_num == 1:
+            for haunter in gv.haunters_level_1:
+                if not haunter.can_move:
+                    if haunter.y_coord > 0:
+                        haunter.can_move = True
+        elif gv.level_num == 2:
+            for haunter in gv.haunters_level_2:
+                if not haunter.can_move:
+                    if haunter.y_coord > 0:
+                        haunter.can_move = True
 
         # Haunter AI
-        for haunter in gv.haunters_level_1:
+
+        haunters_map = [gv.haunters_level_1, gv.haunters_level_2]
+
+        temp_map = -1
+        if gv.level_num == 1:
+            temp_map = 0
+        elif gv.level_num == 2:
+            temp_map = 1
+
+        for haunter in haunters_map[temp_map]:
             haunter.old_x_speed = haunter.x_speed
             haunter.old_y_speed = haunter.y_speed
 
@@ -800,8 +825,16 @@ while not done:
                 fireball.x_coord += fireball.x_speed
                 fireball.y_coord += fireball.y_speed
 
+            haunters_map = [gv.haunters_level_1, gv.haunters_level_2]
+
+            temp_map = -1
+            if gv.level_num == 1:
+                temp_map = 0
+            elif gv.level_num == 2:
+                temp_map = 1
+
             # Check if Haunters are going to be killed.
-            for haunter in gv.haunters_level_1:
+            for haunter in haunters_map[temp_map]:
                 temp_val_x = haunter.x_coord + int(haunter.width) / 2
                 temp_val_y = haunter.y_coord + int(haunter.height) / 2
                 if temp_val_x - 30 < fireball.x_coord < temp_val_x + 30 and \
@@ -931,9 +964,14 @@ while not done:
             if -50 < faintball.x_coord < gv.size[0] + 50 and -50 < faintball.y_coord < gv.size[1] + 50:
                 screen.blit(faintball.get(), [faintball.x_coord, faintball.y_coord])
 
-        for haunter in gv.haunters_level_1:
-            if haunter.is_alive and gv.level_num == 1:
-                screen.blit(haunter.get(), [haunter.x_coord, haunter.y_coord])
+        if gv.level_num == 1:
+            for haunter in gv.haunters_level_1:
+                if haunter.is_alive and gv.level_num == 1:
+                    screen.blit(haunter.get(), [haunter.x_coord, haunter.y_coord])
+        elif gv.level_num == 2:
+            for haunter in gv.haunters_level_2:
+                if haunter.is_alive and gv.level_num == 2:
+                    screen.blit(haunter.get(), [haunter.x_coord, haunter.y_coord])
 
         if gengar.is_alive:
             screen.blit(gengar.get(), [gengar.x_coord, gengar.y_coord])
