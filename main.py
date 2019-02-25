@@ -1004,7 +1004,7 @@ while not done:
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
     # --- Limit to 60 frames per second
-    clock.tick(60)
+    clock.tick(80)
 
 # Close the window and quit.
 pygame.quit()
