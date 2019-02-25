@@ -261,7 +261,7 @@ GREEN_2 = (30, 102, 17)
 
 pygame.init()
 
-gv.level_num = 2
+gv.level_num = 1
 
 # Set the width and height of the screen [width, height]
 gv.size = (816, 574)
@@ -272,9 +272,9 @@ pygame.display.set_caption("Moltres Nightmares")
 logo_image = pygame.image.load("images/logo.png").convert_alpha()
 pygame.display.set_icon(logo_image)
 
-# theme_sound = pygame.mixer.Sound("sounds/theme.wav")
-# theme_sound.set_volume(0.8)
-# theme_sound.play(loops=-1)
+theme_sound = pygame.mixer.Sound("sounds/theme.wav")
+theme_sound.set_volume(0.8)
+theme_sound.play(loops=-1)
 
 fb_sound = pygame.mixer.Sound("sounds/FB_Sound.wav")
 fb_sound.set_volume(0.3)
@@ -307,37 +307,35 @@ fireballs = []
 faintballs = []
 
 gv.haunters_level_1 = []
-# gv.haunters_level_1.append(Haunter([50, -100]))
-# gv.haunters_level_1.append(Haunter([600, -160]))
-# gv.haunters_level_1.append(Haunter([670, -600]))
-# gv.haunters_level_1.append(Haunter([500, -680]))
-# gv.haunters_level_1.append(Haunter([50, -720]))
-# gv.haunters_level_1.append(Haunter([210, -1050]))
-# gv.haunters_level_1.append(Haunter([130, -1300]))
-# gv.haunters_level_1.append(Haunter([650, -1300]))
-# gv.haunters_level_1.append(Haunter([200, -1750]))
-# gv.haunters_level_1.append(Haunter([400, -1800]))
-# gv.haunters_level_1.append(Haunter([70, -2550]))
-# gv.haunters_level_1.append(Haunter([550, -2550]))
-# gv.haunters_level_1.append(Haunter([150, -2300]))
-# gv.haunters_level_1.append(Haunter([650, -2300]))
-# gv.haunters_level_1.append(Haunter([375, -2425]))
+gv.haunters_level_1.append(Haunter([50, -100]))
+gv.haunters_level_1.append(Haunter([600, -160]))
+gv.haunters_level_1.append(Haunter([670, -600]))
+gv.haunters_level_1.append(Haunter([500, -680]))
+gv.haunters_level_1.append(Haunter([50, -720]))
+gv.haunters_level_1.append(Haunter([210, -1050]))
+gv.haunters_level_1.append(Haunter([130, -1300]))
+gv.haunters_level_1.append(Haunter([650, -1300]))
+gv.haunters_level_1.append(Haunter([400, -1800]))
+gv.haunters_level_1.append(Haunter([70, -2550]))
+gv.haunters_level_1.append(Haunter([550, -2550]))
+gv.haunters_level_1.append(Haunter([150, -2300]))
+gv.haunters_level_1.append(Haunter([650, -2300]))
+gv.haunters_level_1.append(Haunter([375, -2425]))
 
 gv.haunters_level_2 = []
-# gv.haunters_level_2.append(Haunter([50, 10]))
-# gv.haunters_level_2.append(Haunter([650, 10]))
-# gv.haunters_level_2.append(Haunter([80, -250]))
-# gv.haunters_level_2.append(Haunter([690, -250]))
-# gv.haunters_level_2.append(Haunter([370, -350]))
-# gv.haunters_level_2.append(Haunter([370, -350]))
-# gv.haunters_level_2.append(Haunter([450, -600]))
-# gv.haunters_level_2.append(Haunter([50, -820]))
-# gv.haunters_level_2.append(Haunter([310, -950]))
-# gv.haunters_level_2.append(Haunter([650, -1050]))
-# gv.haunters_level_2.append(Haunter([120, -1350]))
-# gv.haunters_level_2.append(Haunter([650, -1650]))
-# gv.haunters_level_2.append(Haunter([215, -1950]))
-# gv.haunters_level_2.append(Haunter([535, -1950]))
+gv.haunters_level_2.append(Haunter([50, 10]))
+gv.haunters_level_2.append(Haunter([650, 10]))
+gv.haunters_level_2.append(Haunter([80, -250]))
+gv.haunters_level_2.append(Haunter([690, -250]))
+gv.haunters_level_2.append(Haunter([370, -350]))
+gv.haunters_level_2.append(Haunter([370, -350]))
+gv.haunters_level_2.append(Haunter([450, -600]))
+gv.haunters_level_2.append(Haunter([50, -820]))
+gv.haunters_level_2.append(Haunter([310, -950]))
+gv.haunters_level_2.append(Haunter([650, -1050]))
+gv.haunters_level_2.append(Haunter([120, -1350]))
+gv.haunters_level_2.append(Haunter([650, -1650]))
+gv.haunters_level_2.append(Haunter([535, -1950]))
 
 min_haunter_width, min_haunter_height, gv.max_haunter_width, gv.max_haunter_height = get_max_min_haunter_width_height()
 
@@ -375,7 +373,7 @@ stairs_dim = [int(gv.size[0] / 2) - 65,
 
 # lives must be an even number (at declaration)
 # Player Lives
-lives = 8
+lives = 10
 heart = pygame.image.load("images/heart.png").convert_alpha()
 heart_fact = 0.2
 heart_width = heart.get_rect().width
@@ -413,7 +411,7 @@ pressed_keys = []
 
 gengar = Gengar([int(gv.size[0] / 2) - 65,
                  y_away_from_beginning + 1 - (12 * 2 * ForrestPart("up").size_fact * 12) * level_loops_fact - 15 + 150])
-gengar.is_alive = True
+gengar.is_alive = False
 
 time_counter = 0
 
@@ -705,7 +703,6 @@ while not done:
                         haunter.can_move = True
 
         # Haunter AI
-
         haunters_map = [gv.haunters_level_1, gv.haunters_level_2]
 
         temp_map = -1
@@ -775,8 +772,12 @@ while not done:
             gengar.x_coord += gengar.x_speed
             gengar.y_coord += gengar.y_speed
 
-        # Here, we clear the screen to white. Don't put other drawing commands
-        # above this, or they will be erased with this command.
+        if gv.level_num == 2:
+            for l1 in level_2_objects:
+                if l1.coords[1] - 35 < gengar.y_coord + gv.max_haunter_height < l1.coords[1] + l1.height and \
+                        l1.coords[0] - 45 < gengar.x_coord + gv.max_haunter_width < l1.coords[0] + l1.width + 30:
+                    gengar.x_coord -= gengar.x_speed
+                    gengar.y_coord -= gengar.y_speed
 
         # Move the object according to the speed vector.
         # Also move the whole level and limit the player at x axis.
@@ -1003,7 +1004,7 @@ while not done:
     # --- Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
     # --- Limit to 60 frames per second
-    clock.tick(180)
+    clock.tick(60)
 
 # Close the window and quit.
 pygame.quit()
