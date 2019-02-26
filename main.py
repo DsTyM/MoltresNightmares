@@ -272,18 +272,14 @@ pygame.display.set_caption("Moltres Nightmares")
 logo_image = pygame.image.load("images/logo.png").convert_alpha()
 pygame.display.set_icon(logo_image)
 
-theme_sound = pygame.mixer.Sound("sounds/theme.wav")
-theme_sound.set_volume(0.8)
-theme_sound.play(loops=-1)
-
 fb_sound = pygame.mixer.Sound("sounds/FB_Sound.wav")
-fb_sound.set_volume(0.3)
+fb_sound.set_volume(0.15)
 
 sb_sound = pygame.mixer.Sound("sounds/SB_Sound.wav")
-sb_sound.set_volume(0.3)
+sb_sound.set_volume(0.15)
 
 dh_sound = pygame.mixer.Sound("sounds/Haunter_Died.wav")
-dh_sound.set_volume(0.5)
+dh_sound.set_volume(0.25)
 
 # Player Initialization
 p_fact = 2.5
