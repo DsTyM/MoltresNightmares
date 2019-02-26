@@ -6,14 +6,6 @@ from level_objects import LevelObject
 from enemy import Haunter, Gengar
 
 """
-Notes
-______________________
-
-It can hold 10 ghost horizontally
-eg: Haunter([50 + (70 * 0), 50]), Haunter([50 + (70 * 1), 50]) to Haunter([50 + (70 * 9), 50])
-"""
-
-"""
 Bugs
 ______________________
 
