@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b2290658-c6ac-40c7-8846-d15115335066" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,14 +21,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="375" column="10" lean-forward="true" selection-start-line="375" selection-start-column="10" selection-end-line="375" selection-end-column="10" />
+            <state relative-caret-position="214">
+              <caret line="273" selection-start-line="273" selection-end-line="273" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="756">
+                <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -124,8 +136,8 @@
         <option value="$PROJECT_DIR$/level_objects.py" />
         <option value="$PROJECT_DIR$/global_variables.py" />
         <option value="$PROJECT_DIR$/enemy.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -338,6 +350,8 @@
       <workItem from="1551098816636" duration="84000" />
       <workItem from="1551112113354" duration="551000" />
       <workItem from="1551192046317" duration="1267000" />
+      <workItem from="1551193489479" duration="382000" />
+      <workItem from="1551218060647" duration="504000" />
     </task>
     <task id="LOCAL-00001" summary="Test Commit">
       <created>1548226514949</created>
@@ -598,17 +612,24 @@
       <option name="project" value="LOCAL" />
       <updated>1551112539768</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="volume lowered&#10;and readme title changed">
+      <created>1551193636229</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1551193636229</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164706000" />
+    <option name="totallyTimeSpent" value="165592000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21641791" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22068231" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -679,7 +700,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Fixed player limitation to level_objects." />
     <MESSAGE value="Added Haunter limitation to level_objects." />
     <MESSAGE value="Split Classes into multiple files&#10;and also implementing Haunter to start&#10;moving after appears on screen." />
     <MESSAGE value="Added classes files." />
@@ -704,7 +724,8 @@
     <MESSAGE value="ghosts added" />
     <MESSAGE value="game is ready" />
     <MESSAGE value="Readme added&#10;and fps changed from 60 to 80&#10;so that it can run faster" />
-    <option name="LAST_COMMIT_MESSAGE" value="Readme added&#10;and fps changed from 60 to 80&#10;so that it can run faster" />
+    <MESSAGE value="volume lowered&#10;and readme title changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="volume lowered&#10;and readme title changed" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/images/objects/level_1/tree_1.png">
@@ -733,20 +754,10 @@
     <entry file="file://$PROJECT_DIR$/sounds/Haunter_Died.wav">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="504">
-            <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="375" column="10" lean-forward="true" selection-start-line="375" selection-start-column="10" selection-end-line="375" selection-end-column="10" />
+        <state relative-caret-position="214">
+          <caret line="273" selection-start-line="273" selection-end-line="273" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -791,6 +802,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="756">
+            <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
