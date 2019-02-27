@@ -1,5 +1,10 @@
 # Moltres Nightmares
 
+![demo](https://github.com/DsTyM/Moltres-Nightmares/tree/master/gif/1.gif?raw=true)
+![demo](https://github.com/DsTyM/Moltres-Nightmares/tree/master/gif/2.gif?raw=true)
+![demo](https://github.com/DsTyM/Moltres-Nightmares/tree/master/gif/3.gif?raw=true)
+![demo](https://github.com/DsTyM/Moltres-Nightmares/tree/master/gif/4.gif?raw=true)
+
 Το παιχνίδι αυτό είναι μια παραλλαγή του κλασικού παιχνιδιού Ikari Warriors (1986). 
 Μόνο που αντί για στρατιώτες έχει Pokémon. Συγκεκριμένα ο βασικός χαρακτήρας είναι 
 το Moltres ενώ οι εχθροί του είναι τα Haunters και final boss το Gengar.
