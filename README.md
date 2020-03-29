@@ -37,5 +37,5 @@ pip install Pygame
 ``` 
 Έπειτα κατεβάζετε τα αρχεία από το repository μου και τρέχετε το παιχνίδι:
 ```bash
-python main.py
+python src/main.py
 ``` 
