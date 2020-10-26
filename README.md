@@ -5,35 +5,27 @@
 ![demo](https://github.com/DsTyM/Moltres-Nightmares/blob/master/gif/3.gif?raw=true)
 ![demo](https://github.com/DsTyM/Moltres-Nightmares/blob/master/gif/4.gif?raw=true)
 
-Το παιχνίδι αυτό είναι ένα 2D 8-way shooter με χαρακτήρες Pokemon. Πρέπει να αποφύγεις τις σφαίρες 
-(faint balls) των αντιπάλων, ενώ να τους χτυπάς εσύ με τις δικές σου σφαίρες (fire balls) 
-για να τους σκοτώσεις. 
-Συγκεκριμένα ο βασικός χαρακτήρας είναι 
-το Moltres ενώ οι εχθροί του είναι τα Haunters και final boss το Gengar.
-Ο στόχος σου είναι να φτάσεις στο τέλος της 1ης πίστας και να 
-πέσεις μέσα στην 2η πίστα εκεί ο στόχος σου είναι να φτάσεις μέχρι το τέλος ώστε να 
-σκοτώσεις το final boss (το Gengar) και να νικήσεις το παιχνίδι. Έχεις 10 ζωές, δηλαδή 
-δεν πρέπει να σε χτυπήσουν οι αντίπαλοι μέχρι πάνω από 10 φορές γιατί έτσι θα χάσεις. 
-Το final boss (το Gengar) έχει 4 ζωές, ενώ τα Haunters μια ζωή. Με κόκκινες καρδιές φαίνονται 
-οι δικές σου ζωές και με μπλε καρδιές οι ζωές του Gengar. Στο παιχνίδι επίσης υπάρχει Score 
-για να αναδειχτεί ο καλύτερος παίχτης.
-Να σημειωθεί ότι οι αντίπαλοι έχουν AI ώστε να σε στοχεύουν σε οποία από τις 8 κατευθύνσεις 
-είσαι πιο κοντά και να σε προβάλανε.
-
-Στο παιχνίδι προχωράς με τα 4 βελάκια (πάνω, κάτω, αριστερά, δεξιά) και πυροβολάς με το 
-‘Space’. Με το πλήκτρο ‘p’ μπορείς να βάλεις και να βγάλεις την παύση, ενώ όταν είναι 
-στην Start Screen, πατάς ‘Enter’ για να ξεκινήσει.
-
-Υλοποιήθηκε σε Python 3 χρησιμοποιώντας την βιβλιοθήκη PyGame.
-
-# Εγκατάσταση
-
-Για να εγκαταστήσετε το παιχνίδι απλά πρέπει να έχετε εγκατεστημένη την βιβλιοθήκη PyGame, 
-εγκαθίσταται με αυτή την εντολή:
+This is a Pokemon 2D 8-way shooter Game where you try to avoid the faint balls from the opponents
+and hit them with your own fire balls to kill them.
+  
+More specifically, the main protagonist is Pokemon Moltres, it's enemies are Haunters and final boss is Gengar.
+Scope of the game is to finish the 1st level and start 2nd level were there you need to get to the end to fight with final boss Gengar.
+You have 10 lives, so that means that the can't hit you more than 10 times, because then you'll lose.
+Final Boss Gengar has 4 lives and Haunters have 1 live. Red hearts represent your lives and blue hearts represent Gengar lives.
+The game also keeps score for each player.
+Opponents have AI so they can target in any of the 8 directions you are in.
+  
+You can move your player using the 4 arrow keys: 'left', 'down', 'right', 'up'.
+You shoot with 'space' key. With 'p' key you can pause and un-pause the game.
+When you are at the Start Screen, you press 'Enter' to start the game.
+  
+This game is implemented with Python 3 using PyGame library.
+  
+# Installation
+To install the game, you need to have Python 3 installed and then to run these commands:
 ```bash
-pip install Pygame
+$ git clone https://github.com/DsTyM/Moltres-Nightmares.git
+$ pip install Pygame
+$ python src/main.py
 ``` 
-Έπειτα κατεβάζετε τα αρχεία από το repository μου και τρέχετε το παιχνίδι:
-```bash
-python src/main.py
-``` 
+This project is just for learning purposes.
